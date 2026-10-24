@@ -1,0 +1,14 @@
+# Original résumé contains private commercial details — never publish
+Sri_Charan_Pitta_Resume.pdf
+
+# Local QA / scratch output
+/*.png
+Portfolio_Print.pdf
+node_modules/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

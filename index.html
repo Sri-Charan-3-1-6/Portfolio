@@ -1,0 +1,2616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sri Charan Pitta — Intelligence, Forged</title>
+<meta name="description" content="Sri Charan Pitta — AI/ML researcher, founder of ElderAI Swarm, Google Student Ambassador. A cinematic portfolio in bronze, time and code.">
+<meta name="theme-color" content="#030202">
+<meta property="og:title" content="Sri Charan Pitta — Intelligence, Forged">
+<meta property="og:description" content="AI/ML researcher. Founder of ElderAI Swarm. International Research Fellow. A cinematic portfolio in bronze, time and code.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sri-charan-3-1-6.github.io/Portfolio/">
+<link rel="canonical" href="https://sri-charan-3-1-6.github.io/Portfolio/">
+<meta property="og:image" content="https://sri-charan-3-1-6.github.io/Portfolio/assets/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Sri Charan Pitta — AI/ML researcher and founder of ElderAI Swarm, portrait in bronze tones">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sri Charan Pitta — Intelligence, Forged">
+<meta name="twitter:description" content="AI/ML researcher. Founder of ElderAI Swarm. International Research Fellow.">
+<meta name="twitter:image" content="https://sri-charan-3-1-6.github.io/Portfolio/assets/og-card.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23050403'/%3E%3Ccircle cx='32' cy='32' r='19' fill='none' stroke='%23c99b6b' stroke-width='1.5'/%3E%3Ccircle cx='32' cy='32' r='6' fill='%23c99b6b'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Italiana&family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,500&display=swap');
+
+:root{
+  --bg:#030202;
+  --ink:#fff6ed;
+  --paper:#f2ebdf;
+  --muted:#cfc7bd;
+  --dim:#978e84;
+  --bronze:#c99b6b;
+  --bronze-bright:#e8c49a;
+  --bronze-dark:#7d5434;
+  --blue:#9cc4ee;
+  --line:rgba(255,255,255,.12);
+  --line-soft:rgba(255,255,255,.075);
+  --ease:cubic-bezier(.16,1,.3,1);
+  --pad:60px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;user-select:none;-webkit-tap-highlight-color:transparent}
+html,body{width:100%;background:var(--bg);-ms-overflow-style:none;scrollbar-width:none}
+html{scroll-behavior:smooth}
+body{min-height:900vh;font-family:'Outfit',sans-serif;color:var(--ink);overflow-x:hidden;cursor:none;background:var(--bg)}
+::-webkit-scrollbar{display:none;width:0}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0}
+ul,ol{list-style:none}
+img,svg{display:block}
+::selection{background:var(--bronze);color:#120b06}
+
+@media (hover:hover) and (pointer:fine){
+  *{cursor:none!important}
+}
+@media (hover:none),(pointer:coarse){
+  body{cursor:auto}
+  .cursor-inner,.cursor-outer{display:none!important}
+}
+
+/* ---------- stage ---------- */
+.stage-glow{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(46% 52% at 65% 42%, rgba(118,67,32,.26), transparent 72%),
+    radial-gradient(52% 58% at 28% 76%, rgba(16,38,68,.18), transparent 74%),
+    #030202;
+}
+.stage-glow::after{
+  content:'';position:absolute;left:63%;top:46%;width:44vmin;height:44vmin;
+  transform:translate(-50%,-50%);border-radius:50%;
+  border:1px solid rgba(201,155,107,.16);
+  box-shadow:inset 0 0 80px rgba(201,155,107,.08),0 0 140px rgba(201,155,107,.05);
+}
+#webgl{
+  position:fixed;inset:0;width:100%;height:100%;z-index:1;outline:none;
+  opacity:0;transition:opacity 1.8s ease;
+}
+body.webgl-ready #webgl{opacity:1}
+body.no-webgl #webgl{display:none}
+
+/* ---------- cursor ---------- */
+.cursor-inner{
+  position:fixed;top:0;left:0;width:6px;height:6px;border:1px solid rgba(255,246,237,.95);
+  border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:9999;
+  transition:width .25s,height .25s,background .25s,border-color .25s,opacity .3s;
+}
+.cursor-outer{
+  position:fixed;top:0;left:0;width:40px;height:40px;border:1px solid rgba(255,246,237,.55);
+  border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:9998;
+  transition:width .35s var(--ease),height .35s var(--ease),background .35s,border-color .35s,opacity .3s;
+}
+.cursor-outer.is-hover{width:64px;height:64px;border-color:rgba(201,155,107,.9);background:rgba(201,155,107,.07)}
+.cursor-inner.is-hover{border-color:var(--bronze-bright);background:var(--bronze-bright)}
+body.dossier-open .cursor-inner,body.dossier-open .cursor-outer{opacity:0!important}
+body.cursor-hidden .cursor-inner,body.cursor-hidden .cursor-outer{opacity:0}
+
+/* ---------- header ---------- */
+.main-header{
+  position:fixed;top:0;left:0;width:100%;z-index:80;
+  display:flex;justify-content:space-between;align-items:center;gap:24px;
+  padding:22px var(--pad) 14px;
+  animation:headerIn 1.4s .25s var(--ease) both;
+}
+@keyframes headerIn{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
+.main-header::before{
+  content:'';position:absolute;inset:0 0 -46px 0;z-index:-1;pointer-events:none;
+  background:linear-gradient(to bottom,rgba(3,2,2,.86),rgba(3,2,2,.35) 55%,transparent);
+}
+.brand{display:inline-flex;align-items:center;gap:12px;pointer-events:auto}
+.brand-mark{
+  width:28px;height:28px;border:1px solid rgba(201,155,107,.55);border-radius:50%;
+  display:grid;place-items:center;font-family:'Italiana',serif;font-size:13px;color:var(--bronze-bright);
+  box-shadow:inset 0 0 16px rgba(201,155,107,.08);
+}
+.brand-text{font-size:11px;font-weight:500;letter-spacing:4.4px;text-transform:uppercase;color:#f7eee3}
+.header-nav{display:flex;align-items:center;gap:22px;pointer-events:auto}
+.nav-link{
+  position:relative;font-size:9px;font-weight:500;letter-spacing:2.2px;text-transform:uppercase;
+  color:rgba(255,246,237,.6);transition:color .35s;padding:5px 0;
+}
+.nav-link::after{
+  content:'';position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--bronze);
+  transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease);
+}
+.nav-link:hover,.nav-link.is-active{color:#fff6ed}
+.nav-link:hover::after,.nav-link.is-active::after{transform:scaleX(1)}
+.nav-dot{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.2)}
+.header-actions{display:flex;align-items:center;gap:10px;pointer-events:auto}
+.dossier-trigger{
+  border:1px solid rgba(255,246,237,.22);border-radius:20px;padding:10px 18px;
+  font-size:9px;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:#f7eee3;
+  transition:border-color .35s,background .35s,color .35s;
+}
+.dossier-trigger:hover{border-color:rgba(201,155,107,.7);background:rgba(201,155,107,.08);color:var(--bronze-bright)}
+.contact-btn{
+  display:inline-flex;align-items:center;gap:9px;padding:10px 20px;background:var(--ink);color:#0d0906;
+  border-radius:20px;font-size:9px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;
+  transition:transform .35s var(--ease),background .35s;
+}
+.contact-btn:hover{transform:scale(1.04);background:#fff}
+.btn-circle{width:5px;height:5px;border:1px solid #0d0906;border-radius:50%}
+
+/* ---------- layout grid ---------- */
+.grid-horizontal-line{
+  position:fixed;top:71px;left:0;right:0;height:1px;background:rgba(255,255,255,.1);
+  z-index:5;pointer-events:none;
+}
+.grid-lines{
+  position:fixed;top:0;left:40px;right:40px;width:calc(100% - 80px);height:100vh;
+  display:flex;justify-content:space-between;z-index:5;pointer-events:none;
+}
+.grid-line{position:relative;width:1px;height:100%;background:rgba(255,255,255,.085)}
+.grid-line:nth-child(3){margin-top:71px;height:calc(100vh - 71px)}
+.grid-dot{
+  position:absolute;left:50%;top:20%;width:5px;height:5px;border-radius:50%;
+  transform:translate(-50%,-50%);background:rgba(255,246,237,.35);
+  box-shadow:0 0 6px rgba(255,246,237,.18);will-change:top;
+}
+.grid-dot.bottom{top:80%}
+.story-dashes{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  display:flex;flex-direction:column;gap:10px;
+}
+.story-dash{width:2px;height:34px;background:rgba(255,255,255,.14);border-radius:2px;overflow:hidden}
+.story-dash-fill{width:100%;height:0%;background:var(--bronze-bright);border-radius:2px}
+.stage-vignette{
+  position:fixed;inset:0;z-index:3;pointer-events:none;
+  background:
+    linear-gradient(to bottom,transparent 40%,rgba(3,2,2,.48) 74%,rgba(3,2,2,.82) 100%),
+    linear-gradient(90deg,rgba(3,2,2,.34) 0%,rgba(3,2,2,.10) 24%,transparent 48%),
+    radial-gradient(120% 90% at 50% 50%, transparent 55%, rgba(0,0,0,.42) 100%);
+}
+.grain{
+  position:fixed;inset:0;z-index:900;pointer-events:none;opacity:.045;mix-blend-mode:soft-light;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+  background-size:180px 180px;
+}
+
+/* ---------- slides ---------- */
+.cinematic-container{position:fixed;inset:0;z-index:10;pointer-events:none}
+.slide{
+  position:absolute;bottom:11vh;left:var(--pad);right:var(--pad);
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .5s ease,visibility .5s;
+}
+.slide.is-active{opacity:1;visibility:visible;pointer-events:auto}
+.slide-kicker{
+  display:flex;align-items:center;gap:12px;font-size:9px;font-weight:500;letter-spacing:2.6px;
+  text-transform:uppercase;color:var(--bronze);margin-bottom:18px;
+  opacity:0;transform:translateY(10px);transition:opacity .8s var(--ease) .25s,transform .8s var(--ease) .25s;
+}
+.slide.is-active .slide-kicker{opacity:1;transform:none}
+.slide-kicker::before{content:'';width:26px;height:1px;background:var(--bronze);opacity:.7}
+.slide-title{
+  font-family:'Italiana',serif;font-weight:400;font-size:clamp(56px,8.1vw,116px);
+  line-height:.97;letter-spacing:.005em;color:var(--ink);margin:0;
+  text-shadow:0 4px 60px rgba(0,0,0,.45);
+}
+.slide-title .title-line{display:block;white-space:nowrap}
+.slide-title .char{
+  display:inline-block;opacity:0;transform:translateY(50px);filter:blur(12px);
+  transition:opacity .85s var(--ease),transform .85s var(--ease),filter .85s var(--ease);
+}
+.slide.is-active .slide-title .char{opacity:1;transform:none;filter:blur(0)}
+.slide-desc{
+  font-size:15px;line-height:1.7;font-weight:300;letter-spacing:.25px;color:var(--muted);
+  text-shadow:0 2px 24px rgba(0,0,0,.55);
+  opacity:0;transform:translateY(24px);
+  transition:opacity .9s var(--ease) .38s,transform .9s var(--ease) .38s;
+}
+.slide.is-active .slide-desc{opacity:1;transform:none}
+.fade-up{
+  opacity:0;transform:translateY(16px);
+  transition:opacity .9s var(--ease),transform .9s var(--ease);
+}
+.slide.is-active .fade-up{opacity:1;transform:none}
+.d1{transition-delay:.5s}.d2{transition-delay:.58s}.d3{transition-delay:.66s}.d4{transition-delay:.74s}.d5{transition-delay:.82s}
+
+/* hero */
+#slide-1{left:var(--pad);right:var(--pad)}
+.hero-eyebrow{max-width:800px}
+.hero-title{font-size:clamp(56px,8.6vw,122px);letter-spacing:.01em}
+.hero-grid{
+  display:grid;grid-template-columns:minmax(280px,27vw) minmax(260px,26vw);
+  gap:clamp(38px,6vw,110px);margin-top:30px;max-width:980px;
+}
+.hero-copy .slide-desc{max-width:36ch}
+.hero-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:26px;margin-top:24px}
+.text-link{
+  display:inline-flex;align-items:center;gap:9px;padding:0 0 6px;
+  font-size:9px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#f4eadf;
+  border-bottom:1px solid rgba(201,155,107,.45);
+  transition:color .35s,border-color .35s;
+}
+.text-link span{font-size:12px;color:var(--bronze-bright);transition:transform .35s var(--ease)}
+.text-link:hover{color:var(--bronze-bright);border-color:var(--bronze-bright)}
+.text-link:hover span{transform:translate(2px,-2px)}
+.hero-status{border-top:1px solid rgba(255,255,255,.16);padding-top:4px}
+.status-row{
+  display:grid;grid-template-columns:82px 1fr;gap:14px;align-items:baseline;
+  padding:11px 0;border-bottom:1px solid rgba(255,255,255,.09);
+}
+.status-label{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:#8f857b}
+.status-value{font-size:11.5px;line-height:1.55;color:#e4dbd1;font-weight:300;display:block}
+.status-value .live-dot{
+  display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--bronze-bright);
+  margin-right:7px;box-shadow:0 0 10px rgba(232,196,154,.8);animation:pulse 2.6s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.85)}}
+
+/* research */
+#slide-2{left:0;right:0;bottom:10.5vh}
+.s2-layout{display:flex;align-items:flex-end}
+.s2-title-col{margin-left:calc(25vw + 20px);width:min(30vw,440px);max-width:440px;flex:0 0 auto}
+.s2-title-col .slide-kicker{width:46vw;max-width:560px}
+#slide-2 .slide-title{font-size:clamp(52px,7.4vw,106px)}
+.s2-detail-col{margin-left:2.6vw;width:min(27vw,400px);padding-bottom:5px}
+.fact-list{margin-top:24px;border-top:1px solid rgba(255,255,255,.15)}
+.fact-row{display:flex;justify-content:space-between;gap:18px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.fact-label{font-size:8px;letter-spacing:1.8px;text-transform:uppercase;color:#8f857b;white-space:nowrap}
+.fact-value{font-size:10.5px;letter-spacing:.4px;color:#e8dfd5;text-align:right;line-height:1.45}
+.s2-quote{
+  margin-top:20px;font-family:'Playfair Display',serif;font-style:italic;font-size:17px;
+  color:var(--bronze-bright);line-height:1.5;
+}
+
+/* research field reel */
+.slide-image-mask{
+  position:fixed;top:94px;left:var(--pad);width:calc(25vw - 60px);max-width:330px;aspect-ratio:4/5;
+  overflow:hidden;z-index:6;pointer-events:none;border:1px solid rgba(255,246,237,.14);background:#0b0806;
+  clip-path:inset(0 0 100% 0);opacity:0;
+  transition:clip-path 1.8s var(--ease),opacity .8s ease;
+}
+.slide-image-mask.active{clip-path:inset(0 0 0 0);opacity:1}
+.slide-image-mask::after{
+  content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(to bottom,rgba(5,3,2,.55),transparent 22%,transparent 58%,rgba(5,3,2,.9) 100%),
+    radial-gradient(120% 90% at 50% 40%,transparent 60%,rgba(5,3,2,.4));
+}
+.field-reel{position:absolute;inset:0;transform:scale(1.12);transition:transform 2s var(--ease)}
+.slide-image-mask.active .field-reel{transform:scale(1)}
+.reel-frame{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease}
+.reel-frame.is-current{opacity:1}
+.reel-frame img{
+  width:100%;height:100%;object-fit:cover;
+  filter:sepia(.14) saturate(.86) contrast(1.05) brightness(.9);
+  transform:scale(1.09);transition:transform 7s linear;
+}
+.reel-frame.is-current img{transform:scale(1)}
+.image-tag{
+  position:absolute;left:14px;top:13px;font-size:7px;letter-spacing:2.4px;text-transform:uppercase;
+  color:rgba(255,246,237,.78);z-index:2;display:flex;gap:8px;align-items:center;
+}
+.image-tag::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--bronze-bright)}
+.reel-caption{
+  position:absolute;left:14px;right:14px;bottom:16px;z-index:2;
+  font-size:7.5px;line-height:1.55;letter-spacing:1.6px;text-transform:uppercase;color:rgba(255,246,237,.86);
+  transition:opacity .5s ease;
+}
+.reel-caption em{display:block;font-style:normal;color:var(--bronze);margin-bottom:3px}
+.reel-caption.is-swapping{opacity:0}
+.reel-progress{position:absolute;left:14px;right:14px;bottom:9px;height:1px;background:rgba(255,246,237,.16);z-index:2;overflow:hidden}
+.reel-progress span{display:block;height:100%;width:100%;background:var(--bronze-bright);transform:scaleX(0);transform-origin:left}
+.reel-progress span.run{animation:reelRun var(--reel-ms,4200ms) linear forwards}
+@keyframes reelRun{to{transform:scaleX(1)}}
+
+/* photographic plates */
+.plate-frame{
+  position:relative;padding:6px;border:1px solid rgba(255,246,237,.16);background:rgba(10,7,5,.55);
+  box-shadow:0 30px 70px rgba(0,0,0,.55),0 0 0 1px rgba(201,155,107,.05) inset;
+  clip-path:inset(100% 0 0 0);transition:clip-path 1.6s var(--ease) .35s;
+}
+.slide.is-active .plate-frame{clip-path:inset(0 0 0 0)}
+.plate-frame img{
+  width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;
+  filter:sepia(.2) saturate(.82) contrast(1.06) brightness(.9);
+  transition:filter .8s ease;
+}
+.plate-frame:hover img{filter:sepia(0) saturate(1) contrast(1.02) brightness(1)}
+.plate-frame::after{
+  content:'';position:absolute;inset:6px;pointer-events:none;
+  background:linear-gradient(to bottom,transparent 55%,rgba(5,3,2,.45));mix-blend-mode:multiply;
+}
+.plate-caption{
+  display:flex;justify-content:space-between;gap:10px;margin-top:9px;
+  font-size:7px;letter-spacing:1.6px;text-transform:uppercase;color:#8f857b;
+}
+.plate-caption span:first-child{color:var(--bronze)}
+.hero-plate{position:absolute;right:0;bottom:0;width:clamp(160px,14vw,232px)}
+.signal-portrait{width:clamp(120px,11vw,168px);margin-bottom:30px}
+.signal-portrait .plate-caption{display:block}
+.signal-portrait .plate-caption span{display:block}
+.signal-portrait .plate-caption span + span{margin-top:3px}
+
+/* founder screen */
+.founder-screen{
+  position:fixed;right:var(--pad);bottom:11vh;width:min(25vw,360px);z-index:6;pointer-events:none;
+  opacity:0;transform:translateY(26px) scale(.98);
+  transition:opacity .9s var(--ease),transform 1.2s var(--ease);
+}
+.founder-screen.active{opacity:1;transform:none;transition-delay:.35s}
+.screen-window{
+  border:1px solid rgba(255,246,237,.16);background:#0d0a08;border-radius:6px;overflow:hidden;
+  box-shadow:0 40px 90px rgba(0,0,0,.7),0 0 60px rgba(201,155,107,.08);
+}
+.screen-chrome{display:flex;align-items:center;gap:5px;height:20px;padding:0 9px;border-bottom:1px solid rgba(255,246,237,.08);background:#110d0a}
+.screen-chrome i{width:5px;height:5px;border-radius:50%;background:rgba(255,246,237,.2)}
+.screen-chrome span{margin-left:8px;font-size:6.5px;letter-spacing:1.3px;text-transform:uppercase;color:#8f857b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.screen-window img{width:100%;height:auto;filter:saturate(.72) sepia(.16) brightness(.86)}
+.screen-caption{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:7px;letter-spacing:1.6px;text-transform:uppercase;color:#a79c91}
+.screen-caption .live-dot{width:5px;height:5px;border-radius:50%;background:var(--bronze-bright);box-shadow:0 0 10px rgba(232,196,154,.8);animation:pulse 2.6s infinite}
+
+/* systems hover preview */
+.sys-preview{
+  position:fixed;top:0;left:0;width:300px;z-index:60;pointer-events:none;
+  opacity:0;transform:translate(-50%,-50%) scale(.92);transition:opacity .35s ease,transform .5s var(--ease);
+  will-change:left,top;
+}
+.sys-preview.is-visible{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.sys-card{display:none}
+.sys-card.is-current{display:block}
+.sys-card .screen-window img{aspect-ratio:16/9;object-fit:cover;object-position:top}
+.sys-plate{
+  position:relative;aspect-ratio:16/10;border:1px solid rgba(201,155,107,.32);border-radius:6px;overflow:hidden;
+  background:radial-gradient(120% 90% at 78% 20%,rgba(201,155,107,.22),transparent 55%),linear-gradient(160deg,#18110c,#070504 70%);
+  box-shadow:0 40px 90px rgba(0,0,0,.7);
+  padding:16px 18px;display:flex;flex-direction:column;justify-content:space-between;
+}
+.sys-plate svg{position:absolute;right:12px;bottom:12px;width:38%;height:auto;opacity:.9}
+.sys-plate small{font-size:6.5px;letter-spacing:1.8px;text-transform:uppercase;color:var(--bronze)}
+.sys-plate strong{font-family:'Italiana',serif;font-weight:400;font-size:30px;letter-spacing:.5px;color:var(--ink);line-height:1}
+.sys-plate p{font-size:8px;line-height:1.6;letter-spacing:.4px;color:#a79c91;max-width:24ch;margin-top:6px}
+.sys-plate .sys-stack{font-size:6.5px;letter-spacing:1.3px;text-transform:uppercase;color:#8f857b;line-height:1.7}
+
+/* founder */
+#slide-3{left:var(--pad);right:auto;width:min(42vw,610px);bottom:10.5vh}
+#slide-3 .slide-desc{max-width:44ch}
+#slide-3 .slide-title{font-size:clamp(56px,6.7vw,98px)}
+.agent-list{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
+.agent-list li{
+  display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border:1px solid rgba(255,255,255,.14);
+  border-radius:2px;font-size:8px;letter-spacing:1.4px;text-transform:uppercase;color:#d9d0c5;
+}
+.agent-list li span{color:var(--bronze);font-size:7px}
+.stat-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:24px;border-top:1px solid rgba(255,255,255,.16);padding-top:16px}
+.stat strong{display:block;font-family:'Italiana',serif;font-size:34px;font-weight:400;line-height:1;color:var(--bronze-bright)}
+.stat span{display:block;margin-top:7px;font-size:8.5px;line-height:1.5;letter-spacing:.8px;color:#9b9188;max-width:130px}
+.founder-note{margin-top:18px;display:flex;align-items:center;gap:10px;font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--bronze)}
+.founder-note::before{content:'';width:18px;height:1px;background:var(--bronze);opacity:.6}
+
+/* systems */
+#slide-4{left:var(--pad);right:var(--pad);bottom:10vh}
+.s4-layout{display:grid;grid-template-columns:minmax(300px,1fr) minmax(440px,1.08fr);gap:5vw;align-items:end}
+.s4-left .slide-kicker{margin-bottom:16px}
+.s4-sub{margin-top:22px;max-width:32ch;font-size:12px;line-height:1.7;font-weight:300;color:#9f958b}
+.project-list{border-top:1px solid rgba(255,255,255,.18)}
+.project-row{
+  width:100%;display:grid;grid-template-columns:34px 1.15fr 1fr auto;gap:14px;align-items:center;
+  padding:13px 0;border-bottom:1px solid rgba(255,255,255,.1);text-align:left;
+  transition:border-color .35s,background .35s,padding-left .35s;
+}
+.project-row:hover{border-color:rgba(201,155,107,.6);padding-left:8px;background:linear-gradient(90deg,rgba(201,155,107,.055),transparent 70%)}
+.project-index{font-size:8px;letter-spacing:1px;color:var(--bronze);opacity:.8}
+.project-name{font-family:'Italiana',serif;font-size:25px;letter-spacing:.7px;color:var(--ink);transition:color .35s}
+.project-row:hover .project-name{color:var(--bronze-bright)}
+.project-note{font-size:9px;letter-spacing:.3px;line-height:1.5;color:#a79c91}
+.project-award{font-size:7.5px;letter-spacing:1.4px;text-transform:uppercase;color:#8f857b;text-align:right;line-height:1.5;max-width:150px}
+.project-arrow{font-size:13px;color:var(--bronze);opacity:0;transform:translate(-4px,4px);transition:.35s var(--ease)}
+.project-row:hover .project-arrow{opacity:1;transform:none}
+.project-row .project-arrow{display:none}
+.project-foot{
+  display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:14px;
+  font-size:8px;letter-spacing:1.6px;text-transform:uppercase;color:#8f857b;
+}
+.project-foot:hover{color:var(--bronze-bright)}
+
+/* signal */
+#slide-5{left:var(--pad);right:var(--pad);bottom:11vh}
+.s5-layout{display:grid;grid-template-columns:minmax(300px,1fr) minmax(380px,1.15fr);gap:6vw;align-items:end}
+.s5-right .slide-desc{max-width:42ch}
+.big-email{
+  display:inline-flex;align-items:flex-end;gap:14px;margin-top:22px;
+  font-family:'Italiana',serif;font-size:clamp(22px,2.35vw,34px);letter-spacing:.2px;color:var(--ink);
+  border-bottom:1px solid rgba(201,155,107,.45);padding-bottom:8px;transition:color .35s,border-color .35s;
+}
+.big-email span{font-family:'Outfit',sans-serif;font-size:16px;color:var(--bronze-bright);transition:transform .35s var(--ease)}
+.big-email:hover{color:var(--bronze-bright);border-color:var(--bronze-bright)}
+.big-email:hover span{transform:translate(2px,-3px)}
+.contact-links{display:grid;grid-template-columns:1fr 1fr;gap:0 26px;margin-top:26px;border-top:1px solid rgba(255,255,255,.16)}
+.contact-link{display:grid;grid-template-columns:60px 1fr auto;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:10px;color:#ded5ca;transition:color .3s}
+.contact-link span:first-child{font-size:7.5px;letter-spacing:1.7px;text-transform:uppercase;color:#8f857b}
+.contact-link em{font-style:normal;font-size:9px;color:var(--bronze)}
+.contact-link:hover{color:var(--bronze-bright)}
+button.contact-link{width:100%;text-align:left;font:inherit;font-size:10px}
+.signal-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px;align-items:center}
+.btn-solid{
+  display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#100b07;
+  padding:12px 22px;border-radius:24px;font-size:9px;font-weight:600;letter-spacing:1.7px;text-transform:uppercase;
+  transition:transform .35s var(--ease),background .35s;
+}
+.btn-solid:hover{transform:translateY(-2px);background:var(--bronze-bright)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,246,237,.24);color:var(--ink);
+  padding:11px 20px;border-radius:24px;font-size:9px;letter-spacing:1.6px;text-transform:uppercase;
+  transition:border-color .35s,color .35s;
+}
+.btn-ghost:hover{border-color:var(--bronze);color:var(--bronze-bright)}
+.signal-note{
+  margin-top:22px;font-family:'Playfair Display',serif;font-style:italic;font-size:16px;color:var(--bronze-bright);
+}
+.site-footer{
+  position:fixed;left:var(--pad);right:var(--pad);bottom:22px;z-index:12;
+  display:flex;justify-content:space-between;gap:20px;
+  font-size:8px;letter-spacing:1.8px;text-transform:uppercase;color:rgba(255,246,237,.44);
+  opacity:0;visibility:hidden;transform:translateY(8px);
+  transition:opacity .6s,transform .6s var(--ease),visibility .6s;
+}
+.site-footer.is-visible{opacity:1;visibility:visible;transform:none}
+.footer-mid{color:rgba(201,155,107,.7)}
+.back-top{color:rgba(255,246,237,.6);transition:color .3s}
+.back-top:hover{color:var(--bronze-bright)}
+
+/* geo labels */
+.geo-label{
+  position:fixed;top:0;left:0;z-index:7;pointer-events:none;opacity:0;
+  display:flex;align-items:center;gap:9px;white-space:nowrap;
+  font-size:8px;letter-spacing:1.8px;text-transform:uppercase;color:#efe2d4;
+  text-shadow:0 1px 10px rgba(0,0,0,.9);transition:opacity .45s ease;will-change:left,top;
+}
+.geo-label::before{
+  content:'';width:20px;height:1px;background:linear-gradient(to right,rgba(201,155,107,.15),rgba(201,155,107,.8));
+}
+.geo-label strong{font-weight:500;letter-spacing:1.8px}
+.geo-label em{font-style:normal;color:var(--bronze);font-size:7px;letter-spacing:1.2px}
+
+/* ---------- dossier ---------- */
+.dossier{
+  position:fixed;inset:0;z-index:1000;display:flex;flex-direction:column;
+  background:var(--paper);color:#1d1712;cursor:auto;
+  visibility:hidden;transform:translateY(100%);
+  transition:transform 1.05s var(--ease),visibility 0s linear 1.05s;
+}
+.dossier.is-open{visibility:visible;transform:none;transition:transform 1.05s var(--ease),visibility 0s}
+.dossier,.dossier *{cursor:auto!important;user-select:text}
+.dossier a,.dossier button{cursor:pointer!important}
+.dossier::before{
+  content:'';position:fixed;inset:0;pointer-events:none;opacity:.35;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='.25'/%3E%3C/svg%3E");
+  background-size:200px 200px;mix-blend-mode:multiply;
+}
+.dossier-topbar{
+  position:relative;z-index:3;height:66px;flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:0 40px;border-bottom:1px solid rgba(29,23,18,.16);
+  background:rgba(242,235,223,.9);backdrop-filter:blur(14px);
+}
+.dossier-wordmark{font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase}
+.dossier-tag{font-size:8px;letter-spacing:2.4px;text-transform:uppercase;color:#8a7561;margin-left:auto}
+.dossier-top-actions{display:flex;align-items:center;gap:8px}
+.dossier-top-actions button,.dossier-top-actions a{
+  border:1px solid rgba(29,23,18,.3);border-radius:999px;padding:8px 15px;
+  font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:#1d1712;
+  transition:background .3s,color .3s,border-color .3s;
+}
+.dossier-top-actions button:hover,.dossier-top-actions a:hover{background:#1d1712;color:var(--paper);border-color:#1d1712}
+.dossier-close{display:inline-flex;align-items:center;gap:8px}
+.dossier-close span{font-size:13px;line-height:1}
+.dossier-scroll{position:relative;z-index:2;flex:1 1 auto;overflow-y:auto;overflow-x:hidden;scroll-behavior:smooth;overscroll-behavior:contain}
+.dossier-grid{
+  display:grid;grid-template-columns:210px minmax(0,900px);gap:clamp(40px,6vw,90px);
+  max-width:1240px;margin:0 auto;padding:66px 48px 100px;
+}
+.dossier-rail{position:sticky;top:0;align-self:start;padding-top:8px}
+.rail-label{font-size:8px;letter-spacing:2.4px;text-transform:uppercase;color:#8a7561;margin-bottom:16px}
+.rail-nav a{
+  display:flex;align-items:baseline;gap:12px;padding:7px 0;font-size:11.5px;color:#3c3128;
+  border-bottom:1px solid rgba(29,23,18,.09);transition:color .25s,padding-left .3s;
+}
+.rail-nav a i{font-style:normal;font-size:8px;color:#9c7a5d;letter-spacing:.6px}
+.rail-nav a:hover{color:#8b5e39;padding-left:4px}
+.rail-meta{
+  margin-top:34px;padding-top:16px;border-top:1px solid rgba(29,23,18,.16);
+  font-size:9px;line-height:1.9;letter-spacing:1px;text-transform:uppercase;color:#7d6d5e;
+}
+.rail-meta strong{display:block;color:#2a211a;font-weight:500}
+.rail-hint{margin-top:22px;font-size:8px;letter-spacing:1.2px;color:#a08d7b}
+.resume-head{display:flex;justify-content:space-between;gap:40px;align-items:flex-start}
+.dossier-eyebrow{font-size:8px;letter-spacing:2.8px;text-transform:uppercase;color:#8b5e39;margin-bottom:14px}
+.dossier-name{
+  font-family:'Italiana',serif;font-weight:400;font-size:clamp(58px,6.3vw,86px);line-height:.92;
+  letter-spacing:-.01em;color:#17120d;
+}
+.dossier-role{margin-top:18px;font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:#57493d}
+.dossier-summary{margin-top:24px;max-width:64ch;font-size:14px;line-height:1.75;color:#3b3027}
+.resume-contact{
+  display:grid;grid-template-columns:1fr 1fr;gap:9px 26px;margin-top:26px;
+  border-top:1px solid rgba(29,23,18,.15);padding-top:18px;
+}
+.resume-contact li{display:flex;gap:9px;align-items:baseline;font-size:11px;color:#3b3027}
+.resume-contact li span:first-child{flex:0 0 52px;font-size:7.5px;letter-spacing:1.4px;text-transform:uppercase;color:#957f6b}
+.resume-contact a{border-bottom:1px solid transparent;transition:border-color .25s,color .25s}
+.resume-contact a:hover{border-color:#8b5e39;color:#8b5e39}
+.resume-seal{
+  flex:0 0 132px;height:132px;border:1px solid rgba(139,94,57,.4);border-radius:50%;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;
+  background:radial-gradient(circle at 32% 26%,rgba(201,155,107,.36),rgba(242,235,223,.15) 55%,rgba(139,94,57,.08));
+  color:#6e4b2e;text-align:center;
+}
+.seal-initials{font-family:'Italiana',serif;font-size:28px;letter-spacing:2px;color:#5f3f27}
+.seal-caption{font-family:'Playfair Display',serif;font-style:italic;font-size:10px;line-height:1.35;color:#7e5b3c}
+.dossier-section{scroll-margin-top:30px;margin-top:58px}
+.dsection-head{display:flex;align-items:baseline;gap:16px;border-bottom:1px solid rgba(29,23,18,.18);padding-bottom:12px;margin-bottom:22px}
+.dsection-head span:first-child{font-size:8px;letter-spacing:1.5px;color:#9c7a5d;width:22px}
+.dsection-head h3{font-family:'Italiana',serif;font-weight:400;font-size:34px;letter-spacing:.3px;color:#1b1510}
+.dsection-head .dsection-rule{flex:1;height:1px;background:rgba(29,23,18,.06);align-self:center}
+.dossier p{font-size:13.5px;line-height:1.72;color:#3d3229}
+.dossier p + p{margin-top:12px}
+.dossier .lede{font-size:16px;line-height:1.65;color:#2c231c;max-width:62ch}
+.quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px}
+.quick-item{border-top:1px solid rgba(29,23,18,.18);padding-top:12px}
+.quick-item span{display:block;font-size:7.5px;letter-spacing:1.6px;text-transform:uppercase;color:#957f6b;margin-bottom:6px}
+.quick-item strong{font-size:12px;font-weight:500;line-height:1.5;color:#2a211a}
+.xp-item{display:grid;grid-template-columns:132px 1fr;gap:28px;padding:22px 0;border-bottom:1px solid rgba(29,23,18,.12)}
+.xp-item:first-of-type{border-top:1px solid rgba(29,23,18,.12)}
+.xp-when{font-size:8px;letter-spacing:1.4px;text-transform:uppercase;line-height:1.7;color:#957f6b}
+.xp-role{font-size:16px;font-weight:500;line-height:1.35;color:#211a14}
+.xp-org{font-size:9px;letter-spacing:1.2px;text-transform:uppercase;color:#8b5e39;margin-top:5px}
+.xp-body ul{margin-top:12px;display:grid;gap:7px}
+.xp-body li{position:relative;padding-left:14px;font-size:12.5px;line-height:1.65;color:#453930}
+.xp-body li::before{content:'';position:absolute;left:0;top:.68em;width:4px;height:4px;border-radius:50%;background:#a97e57}
+.xp-stack{margin-top:11px;font-size:8px;letter-spacing:1.1px;text-transform:uppercase;color:#8a7561;line-height:1.7}
+.project-card{padding:22px 0;border-bottom:1px solid rgba(29,23,18,.12)}
+.project-card:first-of-type{border-top:1px solid rgba(29,23,18,.12)}
+.project-card-head{display:flex;justify-content:space-between;gap:20px;align-items:baseline}
+.project-card h4{font-size:15px;font-weight:600;letter-spacing:1px;color:#201912}
+.project-award-tag{font-size:7.5px;letter-spacing:1.2px;text-transform:uppercase;color:#7c5434;border:1px solid rgba(124,84,52,.35);padding:4px 9px;border-radius:999px;white-space:nowrap}
+.project-stack{font-size:7.5px;letter-spacing:1.3px;text-transform:uppercase;color:#957f6b;margin-top:5px;line-height:1.7}
+.project-card p{margin-top:10px;font-size:12.5px;line-height:1.7;color:#453930}
+.skill-row{display:grid;grid-template-columns:132px 1fr;gap:24px;padding:12px 0;border-bottom:1px solid rgba(29,23,18,.11)}
+.skill-row span:first-child{font-size:7.5px;letter-spacing:1.5px;text-transform:uppercase;color:#957f6b;padding-top:2px}
+.skill-row span:last-child{font-size:12.5px;line-height:1.7;color:#332a22}
+.leadership-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px 38px}
+.lead-item{border-top:1px solid rgba(29,23,18,.18);padding-top:12px}
+.lead-item h4{font-size:13px;font-weight:500;line-height:1.4;color:#241c15}
+.lead-item span{display:block;font-size:7.5px;letter-spacing:1.2px;text-transform:uppercase;color:#8b5e39;margin-top:4px}
+.lead-item p{margin-top:7px;font-size:12px;line-height:1.65;color:#4d4035}
+.award-row{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;padding:11px 0;border-bottom:1px solid rgba(29,23,18,.11)}
+.award-row span:first-child{font-size:12.5px;color:#332a22;line-height:1.55}
+.award-row span:last-child{font-size:8px;letter-spacing:1.2px;text-transform:uppercase;color:#8b5e39;text-align:right}
+.dossier-footer{margin-top:54px;padding-top:22px;border-top:1px solid rgba(29,23,18,.2);display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
+.dossier-footer p{font-size:9px;letter-spacing:1.2px;text-transform:uppercase;color:#8a7561}
+.dossier-footer a{font-size:9px;letter-spacing:1.4px;text-transform:uppercase;border-bottom:1px solid #8b5e39;color:#6a4a31;padding-bottom:2px}
+.dossier-print{font-size:9px;letter-spacing:1.4px;text-transform:uppercase;color:#6a4a31;border-bottom:1px solid #8b5e39;padding-bottom:2px}
+.toast{
+  position:fixed;left:50%;bottom:30px;z-index:1500;transform:translate(-50%,20px);
+  background:var(--ink);color:#130d08;border-radius:999px;padding:11px 22px;
+  font-size:9px;font-weight:500;letter-spacing:1.6px;text-transform:uppercase;
+  opacity:0;pointer-events:none;transition:opacity .35s,transform .35s var(--ease);
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* dossier media */
+.resume-portrait{flex:0 0 188px;position:relative;margin:6px 0 0}
+.resume-portrait img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;filter:sepia(.14) saturate(.9) contrast(1.03);box-shadow:0 26px 54px rgba(29,23,18,.2)}
+.resume-portrait .resume-seal{position:absolute;left:-34px;bottom:-30px;width:92px;height:92px;flex:none;gap:4px;background:radial-gradient(circle at 32% 26%,rgba(201,155,107,.4),rgba(242,235,223,.92) 60%);box-shadow:0 10px 26px rgba(29,23,18,.14)}
+.resume-portrait .seal-initials{font-size:20px}
+.resume-portrait .seal-caption{font-size:7px}
+.lb-trigger{display:block;width:100%;padding:0;border:0;background:none;text-align:left;position:relative;overflow:hidden;color:inherit}
+.lb-trigger img{transition:transform 1s var(--ease),filter .6s ease}
+.lb-trigger:hover img{transform:scale(1.035)}
+.lb-trigger:focus-visible{outline:2px solid #8b5e39;outline-offset:3px}
+.lb-trigger::after{
+  content:'↗';position:absolute;right:8px;top:8px;width:24px;height:24px;border-radius:50%;
+  background:rgba(242,235,223,.92);color:#1d1712;font-size:11px;display:grid;place-items:center;
+  opacity:0;transform:scale(.8);transition:opacity .3s,transform .3s var(--ease);
+}
+.lb-trigger:hover::after,.lb-trigger:focus-visible::after{opacity:1;transform:none}
+.d-photo{width:100%;height:auto;object-fit:cover;background:#e4d9c8;filter:sepia(.1) saturate(.9)}
+.d-cap{margin-top:8px;font-size:7.5px;letter-spacing:1.3px;text-transform:uppercase;color:#8a7561;line-height:1.6}
+.d-cap strong{display:block;font-weight:500;color:#3b3027;letter-spacing:1.1px}
+.xp-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:18px}
+.xp-gallery .d-photo{aspect-ratio:4/5}
+.d-window{margin-top:18px;border:1px solid rgba(29,23,18,.16);border-radius:7px;overflow:hidden;background:#fbf8f3;box-shadow:0 22px 48px rgba(29,23,18,.13)}
+.d-chrome{display:flex;align-items:center;gap:5px;height:24px;padding:0 11px;border-bottom:1px solid rgba(29,23,18,.1);background:#ebe3d6}
+.d-chrome i{width:6px;height:6px;border-radius:50%;background:rgba(29,23,18,.18)}
+.d-chrome span{margin-left:8px;font-size:7px;letter-spacing:1.3px;text-transform:uppercase;color:#8a7561}
+.d-window img{width:100%;height:auto}
+.lead-media{display:grid;grid-template-columns:1fr 1fr;gap:18px 14px;margin-top:34px}
+.lead-media .wide{grid-column:1/-1}
+.lead-media .d-photo{aspect-ratio:3/2}
+.d-video{position:relative;background:#120d09;overflow:hidden}
+.d-video video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.video-ctrls{position:absolute;left:14px;bottom:14px;display:flex;gap:8px}
+.video-ctrls button{
+  display:inline-flex;align-items:center;gap:7px;padding:8px 13px;border-radius:999px;
+  background:rgba(18,13,9,.72);border:1px solid rgba(255,246,237,.22);color:#f2ebdf;backdrop-filter:blur(8px);
+  font-size:7.5px;letter-spacing:1.4px;text-transform:uppercase;transition:background .3s,color .3s;
+}
+.video-ctrls button:hover{background:#f2ebdf;color:#1d1712}
+.video-ctrls button:focus-visible{outline:2px solid #e8c49a;outline-offset:2px}
+.video-tag{position:absolute;left:14px;top:12px;font-size:7px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,246,237,.82);display:flex;align-items:center;gap:7px}
+.video-tag::before{content:'';width:5px;height:5px;border-radius:50%;background:#e8c49a;box-shadow:0 0 8px rgba(232,196,154,.9)}
+.ev-intro{max-width:62ch}
+.ev-label{margin:30px 0 14px;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:#8b5e39;display:flex;gap:12px;align-items:center}
+.ev-label::after{content:'';flex:1;height:1px;background:rgba(29,23,18,.1)}
+.ev-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px 14px}
+.ev-item.ev-wide{grid-column:span 2}
+.ev-mat{
+  aspect-ratio:var(--ar,3/4);padding:14px;background:linear-gradient(160deg,#e9dfcf,#ddd0bc);
+  border:1px solid rgba(29,23,18,.08);
+}
+.ev-mat img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 10px 18px rgba(29,23,18,.22))}
+.ev-mat.is-photo{padding:0}
+.ev-mat.is-photo img{object-fit:cover;filter:sepia(.1) saturate(.9)}
+.ev-strip{
+  display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,31%);gap:12px;
+  overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px;
+  scrollbar-width:thin;scrollbar-color:#a97e57 transparent;
+}
+.ev-strip figure{scroll-snap-align:start}
+.ev-strip .d-photo{aspect-ratio:3/2}
+.ev-note{margin-top:14px;font-size:11px!important;color:#7d6d5e!important}
+
+/* lightbox */
+.lightbox{
+  position:fixed;inset:0;z-index:1400;display:grid;grid-template-rows:minmax(0,1fr) auto;
+  background:rgba(12,9,6,.95);backdrop-filter:blur(6px);color:#e8dfd5;
+  opacity:0;visibility:hidden;transition:opacity .35s ease,visibility 0s linear .35s;
+}
+.lightbox.is-open{opacity:1;visibility:visible;transition:opacity .35s ease}
+.lightbox,.lightbox *{cursor:auto!important}
+.lightbox button{cursor:pointer!important}
+.lb-stage{display:flex;align-items:center;justify-content:center;padding:72px 92px 8px;min-height:0}
+.lb-stage img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;box-shadow:0 40px 90px rgba(0,0,0,.6);transform:scale(.97);transition:transform .5s var(--ease),opacity .3s}
+.lightbox.is-open .lb-stage img{transform:none}
+.lb-stage img.is-loading{opacity:.2}
+.lb-bar{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:16px 40px 26px}
+.lb-caption{font-size:10px;letter-spacing:1.4px;text-transform:uppercase;line-height:1.6;color:#d9d0c5;max-width:70ch}
+.lb-count{font-size:9px;letter-spacing:2px;color:var(--bronze);white-space:nowrap}
+.lb-btn{
+  position:absolute;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,246,237,.24);
+  color:#f2ebdf;font-size:16px;display:grid;place-items:center;background:rgba(12,9,6,.5);transition:background .3s,color .3s;
+}
+.lb-btn:hover{background:#f2ebdf;color:#1d1712}
+.lb-btn:focus-visible{outline:2px solid #e8c49a;outline-offset:3px}
+.lb-close{top:18px;right:22px}
+.lb-prev{left:22px;top:50%;transform:translateY(-50%)}
+.lb-next{right:22px;top:50%;transform:translateY(-50%)}
+.lb-btn[hidden]{display:none}
+
+/* no-js */
+.no-js-fallback{
+  position:fixed;inset:0;z-index:2000;background:#050403;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:18px;text-align:center;padding:30px;
+}
+
+/* responsive */
+@media (max-width:1180px){
+  :root{--pad:42px}
+  .header-nav{gap:16px}
+  .hero-grid{grid-template-columns:minmax(270px,31vw) minmax(250px,29vw)}
+  #slide-3{width:min(48vw,620px)}
+  .s4-layout{grid-template-columns:minmax(280px,1fr) minmax(400px,1.15fr);gap:4vw}
+  .project-row{grid-template-columns:28px 1.1fr 1fr;gap:12px}
+  .project-award{grid-column:2/4;text-align:left;max-width:none;padding-top:2px}
+  .project-row{padding:11px 0}
+  .project-name{font-size:23px}
+  .contact-links{gap:0 18px}
+}
+@media (max-width:980px){
+  .header-nav{display:none}
+  .hero-grid{gap:36px}
+  .dossier-grid{grid-template-columns:1fr;gap:0;padding:52px 36px 80px}
+  .dossier-rail{display:none}
+  .resume-seal{flex-basis:110px;height:110px}
+  .founder-screen,.sys-preview{display:none}
+}
+@media (max-width:820px){
+  :root{--pad:20px}
+  body{min-height:880vh}
+  .main-header{padding:16px 20px 10px;gap:12px}
+  .grid-horizontal-line{top:63px}
+  .brand{gap:9px}
+  .brand-mark{width:24px;height:24px;font-size:11px}
+  .brand-text{font-size:8.5px;letter-spacing:2.4px}
+  .header-actions{gap:7px}
+  .dossier-trigger{padding:8px 12px;font-size:7.5px;letter-spacing:1.3px}
+  .contact-btn{padding:8px 12px;font-size:7.5px;letter-spacing:1.2px;gap:6px}
+  .grid-lines{left:auto;right:14px;width:auto;justify-content:flex-end}
+  .grid-line{display:none}
+  .grid-line.story-progress-container{display:block;width:1px}
+  .grid-dot{display:none}
+  .story-dashes{gap:8px}
+  .story-dash{height:28px}
+  .geo-label{display:none}
+  .cinematic-container{pointer-events:none}
+  .slide{bottom:11.5vh;left:20px!important;right:20px!important;width:auto!important;max-width:none!important}
+  .slide-title{font-size:clamp(43px,12.2vw,74px);line-height:1.01}
+  .slide-kicker{font-size:7px;letter-spacing:1.8px;margin-bottom:12px}
+  .slide-kicker::before{width:16px}
+  .slide-desc{font-size:13px;line-height:1.66}
+  .hero-title{font-size:clamp(50px,14.6vw,82px)}
+  .hero-grid{display:block;margin-top:20px;max-width:none}
+  .hero-copy .slide-desc{max-width:38ch;font-size:12.5px}
+  .hero-ctas{gap:20px;margin-top:18px}
+  .text-link{font-size:7.5px;letter-spacing:1.5px;padding-bottom:4px}
+  .hero-status{margin-top:18px;display:none}
+  .status-row{grid-template-columns:70px 1fr;padding:7px 0}
+  .status-value{font-size:10px}
+  .hero-eyebrow{font-size:6.5px;letter-spacing:1.7px;line-height:1.7}
+  .hero-eyebrow span{text-wrap:balance}
+  .s2-layout{display:block}
+  .s2-title-col{margin-left:0;width:100%;max-width:none}
+  .s2-title-col .slide-kicker{width:100%;max-width:none}
+  #slide-2 .slide-title{font-size:clamp(44px,12.5vw,72px)}
+  .s2-detail-col{margin:18px 0 0;width:100%;max-width:none}
+  .fact-list{display:none}
+  .s2-quote{display:none}
+  .slide-image-mask{top:78px;left:20px;width:39vw;max-width:180px}
+  .reel-caption{left:9px;right:9px;bottom:12px;font-size:5.5px;letter-spacing:1px}
+  .reel-progress{left:9px;right:9px;bottom:6px}
+  .hero-plate,.signal-portrait{display:none}
+  .image-tag{font-size:6px;left:9px;top:9px}
+  #slide-3{width:auto}
+  #slide-3 .slide-desc{max-width:none}
+  .agent-list{margin-top:15px;gap:5px}
+  .agent-list li{font-size:6.5px;padding:4px 7px;letter-spacing:1px}
+  .stat-strip{gap:10px;margin-top:17px;padding-top:12px}
+  .stat strong{font-size:26px}
+  .stat span{font-size:7px;margin-top:5px}
+  .founder-note{font-size:7px;letter-spacing:1.1px;margin-top:12px}
+  .s4-layout{display:block}
+  .s4-left .slide-kicker{margin-bottom:10px}
+  .s4-sub{display:none}
+  #slide-4 .slide-title{font-size:clamp(44px,12.2vw,70px)}
+  .project-list{margin-top:16px}
+  .project-row{grid-template-columns:22px 1fr auto;gap:8px;padding:8px 0}
+  .project-index{font-size:7px}
+  .project-name{font-size:19px;line-height:1.2}
+  .project-note{display:none}
+  .project-award{grid-column:auto;font-size:6px;text-align:right;max-width:90px;line-height:1.4}
+  .project-foot{font-size:6.5px;margin-top:10px}
+  #slide-5 .slide-title{font-size:clamp(46px,13vw,74px)}
+  .s5-layout{display:block}
+  .s5-right{margin-top:20px}
+  .s5-right .slide-desc{font-size:12px;max-width:38ch}
+  .big-email{font-size:clamp(19px,5.5vw,25px);margin-top:16px;gap:8px}
+  .big-email span{font-size:12px}
+  .contact-links{margin-top:16px;grid-template-columns:1fr;gap:0}
+  .contact-link{grid-template-columns:48px 1fr auto;padding:7px 0;font-size:9px}
+  .contact-link span:first-child{font-size:6.5px}
+  .contact-link em{font-size:8px}
+  .signal-actions{margin-top:17px;gap:8px}
+  .btn-solid,.btn-ghost{padding:9px 14px;font-size:7.5px;letter-spacing:1.2px}
+  .signal-note{display:none}
+  .site-footer{display:none}
+  .stage-vignette{background:linear-gradient(to bottom,transparent 28%,rgba(3,2,2,.42) 56%,rgba(3,2,2,.86) 86%,rgba(3,2,2,.95) 100%)}
+  .dossier-topbar{height:58px;padding:0 16px;gap:8px}
+  .dossier-wordmark{font-size:8px;letter-spacing:2.2px}
+  .dossier-tag{display:none}
+  .dossier-top-actions{gap:6px;margin-left:auto}
+  .dossier-top-actions button,.dossier-top-actions a{padding:7px 10px;font-size:7px;letter-spacing:1px}
+  .dossier-top-actions .copy-email{display:none}
+  .dossier-grid{padding:34px 20px 70px}
+  .resume-head{flex-direction:column-reverse;gap:26px}
+  .resume-portrait{flex:none;width:132px;margin:0}
+  .resume-portrait .resume-seal{width:70px;height:70px;left:auto;right:-38px;bottom:-14px}
+  .resume-portrait .seal-initials{font-size:16px}
+  .resume-portrait .seal-caption{display:none}
+  .xp-gallery{grid-template-columns:repeat(2,1fr)}
+  .lead-media{grid-template-columns:1fr}
+  .ev-grid{grid-template-columns:1fr 1fr;gap:18px 10px}
+  .ev-mat{padding:9px}
+  .ev-strip{grid-auto-columns:78%}
+  .lb-stage{padding:64px 12px 6px}
+  .lb-bar{padding:12px 124px 20px 18px;flex-direction:column;gap:6px;min-height:78px}
+  .lb-prev,.lb-next{top:auto;bottom:18px;transform:none;width:40px;height:40px}
+  .lb-prev{left:auto;right:68px}
+  .lb-next{right:18px}
+  .lb-close{top:12px;right:12px}
+  .video-ctrls{left:10px;bottom:10px}
+  .video-ctrls button{padding:7px 10px;font-size:6.5px}
+  .dossier-name{font-size:clamp(48px,14vw,68px)}
+  .dossier-summary,.dossier .lede{font-size:13px}
+  .resume-contact{grid-template-columns:1fr;gap:7px}
+  .quick-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .xp-item{grid-template-columns:1fr;gap:8px;padding:18px 0}
+  .xp-when{font-size:7.5px}
+  .dsection-head h3{font-size:28px}
+  .dossier-section{margin-top:44px}
+  .leadership-grid{grid-template-columns:1fr;gap:20px}
+  .skill-row{grid-template-columns:104px 1fr;gap:14px}
+  .project-card-head{display:block}
+  .project-award-tag{display:inline-block;margin-top:7px}
+}
+@media (max-height:760px) and (min-width:821px){
+  .slide-title{font-size:clamp(50px,6.5vw,88px)}
+  .hero-title{font-size:clamp(52px,7.4vw,98px)}
+  .slide{bottom:12.5vh}
+  .slide-desc{font-size:13.5px;line-height:1.62}
+  .hero-grid{margin-top:22px}
+  .hero-status{display:none}
+  .fact-list{margin-top:16px}
+  .agent-list{margin-top:14px}
+  .stat-strip{margin-top:16px}
+  #slide-2 .slide-title{font-size:clamp(46px,6.6vw,88px)}
+  .project-row{padding:10px 0}
+  .project-name{font-size:22px}
+  .slide-image-mask{width:calc(22vw - 40px);top:86px}
+  .hero-plate{width:clamp(120px,10vw,150px)}
+  .signal-portrait{width:104px;margin-bottom:18px}
+  .signal-portrait .plate-caption{display:none}
+  .founder-screen{width:min(23vw,300px);bottom:12.5vh}
+}
+@media (max-height:600px) and (min-width:821px){
+  .signal-portrait,.hero-plate{display:none}
+}
+@media (max-height:680px) and (max-width:820px){
+  .slide-image-mask{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .reel-frame img,.reel-frame.is-current img{transform:none}
+  .plate-frame{clip-path:none}
+  html{scroll-behavior:auto}
+}
+
+/* print */
+@media print{
+  @page{margin:14mm}
+  html,body{min-height:0!important;background:#fff!important;color:#000!important;overflow:visible!important;height:auto!important}
+  body>*:not(.dossier){display:none!important}
+  .dossier{position:static!important;display:block!important;visibility:visible!important;transform:none!important;background:#fff!important;height:auto!important;overflow:visible!important;transition:none!important}
+  .dossier *{transition:none!important;animation:none!important}
+  .dossier::before{display:none}
+  .dossier-topbar,.dossier-rail,.dossier-footer,.toast,.grain{display:none!important}
+  .dossier-scroll{overflow:visible!important;height:auto!important}
+  .dossier-grid{display:block!important;max-width:none!important;padding:0!important}
+  .resume-head{display:block}
+  .resume-seal,.resume-portrait,.xp-gallery,.d-window,.lead-media,#dossier-evidence,.lightbox{display:none!important}
+  .dossier-name{font-size:52px!important}
+  .dossier-summary,.dossier p,.xp-body li,.project-card p{font-size:10.5pt!important;line-height:1.5!important}
+  .dossier-section{margin-top:24pt!important;page-break-inside:avoid}
+  .xp-item,.project-card,.award-row{page-break-inside:avoid}
+  .dossier a{text-decoration:none;color:#000!important}
+  .resume-contact{grid-template-columns:1fr 1fr!important}
+  .dossier-role,.dsection-head h3{color:#000!important}
+  .dsection-head{border-color:#bbb!important}
+  .quick-grid{grid-template-columns:repeat(3,1fr)!important}
+}
+</style>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Person",
+  "name":"Sri Charan Pitta",
+  "jobTitle":"AI/ML Researcher & Startup Founder",
+  "email":"mailto:sricharanpittasp6@gmail.com",
+  "address":{"@type":"PostalAddress","addressLocality":"Rajkot","addressRegion":"Gujarat","addressCountry":"India"},
+  "affiliation":[{"@type":"EducationalOrganization","name":"Marwadi University"},{"@type":"Organization","name":"ElderAI Swarm"}],
+  "sameAs":["https://linkedin.com/in/sri-charan-pitta","https://github.com/Sri-Charan-3-1-6"],
+  "knowsAbout":["Artificial Intelligence","Machine Learning","Multi-Agent Systems","LLM Orchestration","Computer Vision","On-Device AI"]
+}
+</script>
+</head>
+<body>
+<div class="cursor-inner" aria-hidden="true"></div>
+<div class="cursor-outer" aria-hidden="true"></div>
+
+<div class="stage-glow" aria-hidden="true"></div>
+
+<header class="main-header">
+  <a href="#" class="brand" data-scroll-to="0" aria-label="Sri Charan Pitta — back to top">
+    <span class="brand-mark">S</span>
+    <span class="brand-text">S · C · Pitta</span>
+  </a>
+  <nav class="header-nav" aria-label="Primary">
+    <a href="#slide-2" class="nav-link" data-scroll-to="0.30">Research</a>
+    <span class="nav-dot" aria-hidden="true"></span>
+    <a href="#slide-3" class="nav-link" data-scroll-to="0.54">Founder</a>
+    <span class="nav-dot" aria-hidden="true"></span>
+    <a href="#slide-4" class="nav-link" data-scroll-to="0.76">Systems</a>
+    <span class="nav-dot" aria-hidden="true"></span>
+    <a href="#slide-5" class="nav-link" data-scroll-to="0.95">Signal</a>
+  </nav>
+  <div class="header-actions">
+    <button class="dossier-trigger" type="button" data-open-dossier aria-haspopup="dialog" aria-controls="dossier">Dossier</button>
+    <a class="contact-btn" href="mailto:sricharanpittasp6@gmail.com">Contact <span class="btn-circle" aria-hidden="true"></span></a>
+  </div>
+</header>
+
+<main class="cinematic-container">
+  <!-- 01 — HERO -->
+  <section class="slide is-active" id="slide-1" aria-label="Introduction">
+    <p class="slide-kicker hero-eyebrow"><span>AI/ML Researcher · Startup Founder · Google Student Ambassador</span></p>
+    <h1 class="slide-title hero-title">Sri Charan<br>Pitta</h1>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="slide-desc">Third-year B.Tech CSE (AI/ML) at Marwadi University. International Research Fellow at Southern Federal University, Russia. I build multi-agent AI systems for problems that deserve better answers.</p>
+        <div class="hero-ctas">
+          <button class="text-link" type="button" data-open-dossier aria-haspopup="dialog" aria-controls="dossier">Open the dossier <span>↗</span></button>
+          <a class="text-link" href="Sri_Charan_Pitta_CV.pdf" download>Download CV <span>↓</span></a>
+        </div>
+      </div>
+      <div class="hero-status">
+        <div class="status-row">
+          <span class="status-label">Focus</span>
+          <span class="status-value">Multi-agent systems · applied ML · voice &amp; on-device AI</span>
+        </div>
+        <div class="status-row">
+          <span class="status-label">Now</span>
+          <span class="status-value">Founder, ElderAI Swarm — winning finalist &amp; incubated, IIT Madras I-Summit ’26</span>
+        </div>
+        <div class="status-row">
+          <span class="status-label">Open to</span>
+          <span class="status-value"><span class="live-dot"></span>AI/ML internships &amp; research collaborations</span>
+        </div>
+      </div>
+    </div>
+    <figure class="hero-plate">
+      <div class="plate-frame">
+        <img src="assets/portrait-profile-520.webp" srcset="assets/portrait-profile-520.webp 520w, assets/portrait-profile-1000.webp 1000w" sizes="200px" width="520" height="650" alt="Sri Charan Pitta in profile, in a warm brick interior in Rostov-on-Don" decoding="async" fetchpriority="high">
+      </div>
+      <figcaption class="plate-caption"><span>Fig. 00</span><span>Rostov-on-Don · 19.09.26</span></figcaption>
+    </figure>
+  </section>
+
+  <!-- 02 — RESEARCH -->
+  <section class="slide" id="slide-2" aria-label="International research">
+    <div class="s2-layout">
+      <div class="s2-title-col">
+        <p class="slide-kicker">01 — International Research · SFedU, Rostov-on-Don</p>
+        <h2 class="slide-title">Beyond<br>Borders</h2>
+      </div>
+      <div class="s2-detail-col">
+        <p class="slide-desc">Selected as one of four students from Marwadi University for a fully-funded RSF Mega-Grant research exchange at Southern Federal University. Two weeks of fieldwork, scientific presentation and soil digital-twin collaboration with researchers from Russia, Kazakhstan and Moscow.</p>
+        <div class="fact-list fade-up d2">
+          <div class="fact-row"><span class="fact-label">Role</span><span class="fact-value">International Research Fellow</span></div>
+          <div class="fact-row"><span class="fact-label">Funding</span><span class="fact-value">Russian Science Foundation · Mega-Grant</span></div>
+          <div class="fact-row"><span class="fact-label">When</span><span class="fact-value">13—26 September 2026</span></div>
+        </div>
+        <p class="s2-quote fade-up d3">“I modelled how land breathes under a changing climate.”</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 — FOUNDER -->
+  <section class="slide" id="slide-3" aria-label="Foundership">
+    <p class="slide-kicker">02 — Foundership · ElderAI Swarm</p>
+    <h2 class="slide-title">Care,<br>Engineered</h2>
+    <p class="slide-desc">ElderAI Swarm is a five-agent autonomous care platform built for the people who raised us. Medicine Buddy, Emergency Responder, Health Guardian, Daily Companion and Life Coordinator work as one care loop — with CNN + LSTM fall detection on WearOS, across web, Android, iOS and wearables.</p>
+    <ul class="agent-list fade-up d2" aria-label="Five agents">
+      <li><span>01</span>Medicine Buddy</li>
+      <li><span>02</span>Emergency Responder</li>
+      <li><span>03</span>Health Guardian</li>
+      <li><span>04</span>Daily Companion</li>
+      <li><span>05</span>Life Coordinator</li>
+    </ul>
+    <div class="stat-strip fade-up d3">
+      <div class="stat"><strong>05</strong><span>Agents, one care loop</span></div>
+      <div class="stat"><strong>04</strong><span>Platforms — web, Android, iOS, WearOS</span></div>
+      <div class="stat"><strong>01</strong><span>Winning finalist, IIT Madras I-Summit ’26</span></div>
+    </div>
+    <p class="founder-note fade-up d4">Winning finalist · IIT Madras I-Summit (E-Summit ’26) · Incubated by StartupVisors</p>
+  </section>
+
+  <!-- 04 — SYSTEMS -->
+  <section class="slide" id="slide-4" aria-label="Selected systems">
+    <div class="s4-layout">
+      <div class="s4-left">
+        <p class="slide-kicker">03 — Selected Systems · 2025—2026</p>
+        <h2 class="slide-title">Systems<br>in the Wild</h2>
+        <p class="s4-sub fade-up d2">Production-grade AI, shipped under pressure. Four systems, four different definitions of “urgent”.</p>
+      </div>
+      <div class="s4-right">
+        <ul class="project-list">
+          <li><button class="project-row fade-up d1" type="button" data-open-dossier data-target="project-ghostwire" data-preview="ghostwire" aria-haspopup="dialog" aria-controls="dossier">
+            <span class="project-index">01</span>
+            <span class="project-name">GHOSTWIRE</span>
+            <span class="project-note">Behavioural-DNA fraud detection, in real time</span>
+            <span class="project-award">Union Bank iDEA 2.0<br>Grand Finale</span>
+          </button></li>
+          <li><button class="project-row fade-up d2" type="button" data-open-dossier data-target="project-aira" data-preview="aira" aria-haspopup="dialog" aria-controls="dossier">
+            <span class="project-index">02</span>
+            <span class="project-name">AIRA</span>
+            <span class="project-note">A financial co-pilot for Indian retail investors</span>
+            <span class="project-award">ET AI Hackathon<br>2× Semi-Finalist</span>
+          </button></li>
+          <li><button class="project-row fade-up d3" type="button" data-open-dossier data-target="project-praana" data-preview="praana" aria-haspopup="dialog" aria-controls="dossier">
+            <span class="project-index">03</span>
+            <span class="project-name">PRAANA</span>
+            <span class="project-note">Student wellness, entirely on-device</span>
+            <span class="project-award">AMD Slingshot<br>Shortlisted</span>
+          </button></li>
+          <li><button class="project-row fade-up d4" type="button" data-open-dossier data-target="project-civicease" data-preview="civicease" aria-haspopup="dialog" aria-controls="dossier">
+            <span class="project-index">04</span>
+            <span class="project-name">CivicEase</span>
+            <span class="project-note">Government services, unlocked by voice</span>
+            <span class="project-award">Google Startup School<br>Deployed</span>
+          </button></li>
+        </ul>
+        <button class="project-foot text-link" type="button" data-open-dossier aria-haspopup="dialog" aria-controls="dossier">Full systems index <span>↗</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 — SIGNAL -->
+  <section class="slide" id="slide-5" aria-label="Contact">
+    <div class="s5-layout">
+      <div class="s5-left">
+        <figure class="signal-portrait">
+          <div class="plate-frame">
+            <img src="assets/portrait-main-640.webp" srcset="assets/portrait-main-640.webp 640w, assets/portrait-main-1200.webp 1200w" sizes="170px" width="640" height="800" alt="Sri Charan Pitta, smiling, looking at the camera" loading="lazy" decoding="async">
+          </div>
+          <figcaption class="plate-caption"><span>Fig. 05 — The author</span><span>Still listening</span></figcaption>
+        </figure>
+        <p class="slide-kicker">04 — The Next Orbit</p>
+        <h2 class="slide-title">The<br>Signal</h2>
+        <p class="signal-note fade-up d3">Fortune favours the forged.</p>
+      </div>
+      <div class="s5-right">
+        <p class="slide-desc">Currently building ElderAI Swarm. Available for AI/ML internships and research collaborations. If you’re working on something that should exist, reach out.</p>
+        <a class="big-email" href="mailto:sricharanpittasp6@gmail.com">sricharanpittasp6@gmail.com <span>↗</span></a>
+        <div class="contact-links fade-up d2">
+          <a class="contact-link" href="https://linkedin.com/in/sri-charan-pitta" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><span>sri-charan-pitta</span><em>↗</em></a>
+          <a class="contact-link" href="https://github.com/Sri-Charan-3-1-6" target="_blank" rel="noopener noreferrer"><span>GitHub</span><span>Sri-Charan-3-1-6</span><em>↗</em></a>
+          <button class="contact-link" type="button" data-open-dossier data-target="dossier-evidence" aria-haspopup="dialog" aria-controls="dossier"><span>Evidence</span><span>Certificates &amp; field notes</span><em>↗</em></button>
+          <a class="contact-link" href="https://maps.google.com/?q=Rajkot,Gujarat,India" target="_blank" rel="noopener noreferrer"><span>Based</span><span>Rajkot, Gujarat · IST</span><em>↗</em></a>
+        </div>
+        <div class="signal-actions fade-up d3">
+          <a class="btn-solid" href="mailto:sricharanpittasp6@gmail.com?subject=Hello%20Sri%20Charan">Start a conversation <span>↗</span></a>
+          <a class="btn-ghost" href="Sri_Charan_Pitta_CV.pdf" download>Download CV <span>↓</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- research field reel -->
+<div class="slide-image-mask" id="slide-2-img" aria-hidden="true">
+  <div class="field-reel">
+    <figure class="reel-frame is-current" data-caption="Receiving the RSF participant certificate" data-place="SFedU · Rostov-on-Don · Sep 2026">
+      <img src="assets/field-handover-800.webp" width="800" height="1000" alt="" decoding="async">
+    </figure>
+    <figure class="reel-frame" data-caption="Academy of Biology &amp; Medicine" data-place="Southern Federal University">
+      <img src="assets/field-sfedu-800.webp" width="800" height="1000" alt="" loading="lazy" decoding="async">
+    </figure>
+    <figure class="reel-frame" data-caption="Rostov-on-Don, after the field day" data-place="47.24° N · 39.70° E">
+      <img src="assets/field-night-800.webp" width="800" height="1000" alt="" loading="lazy" decoding="async">
+    </figure>
+    <figure class="reel-frame" data-caption="City Day — Rostov turns 277" data-place="18 · 09 · 2026">
+      <img src="assets/field-cityday-800.webp" width="800" height="1000" alt="" loading="lazy" decoding="async">
+    </figure>
+  </div>
+  <div class="image-tag">Field note <span data-reel-index>01</span> / 04</div>
+  <p class="reel-caption"><em data-reel-place>SFedU · Rostov-on-Don · Sep 2026</em><span data-reel-caption>Receiving the RSF participant certificate</span></p>
+  <div class="reel-progress"><span></span></div>
+</div>
+
+<!-- founder screen -->
+<div class="founder-screen" id="founder-screen" aria-hidden="true">
+  <div class="screen-window">
+    <div class="screen-chrome"><i></i><i></i><i></i><span>elderai-swarm · caregiver dashboard</span></div>
+    <img src="assets/screen-elderai-900.webp" srcset="assets/screen-elderai-900.webp 900w, assets/screen-elderai-1800.webp 1800w" sizes="360px" width="900" height="434" alt="" loading="lazy" decoding="async">
+  </div>
+  <p class="screen-caption"><span class="live-dot"></span>Live build · web · Android · iOS · WearOS</p>
+</div>
+
+<!-- systems hover preview -->
+<div class="sys-preview" id="sys-preview" aria-hidden="true">
+  <div class="sys-card" data-card="ghostwire">
+    <div class="sys-plate">
+      <svg viewBox="0 0 160 120" fill="none" stroke="#c99b6b" stroke-width=".8">
+        <g stroke-opacity=".38"><path d="M80 22 124 54 107 104H53L36 54Z"/><path d="M80 22v40M124 54 80 62M107 104 80 62M53 104 80 62M36 54l44 8"/></g>
+        <circle cx="80" cy="62" r="7" fill="#e8c49a" fill-opacity=".9" stroke="none"/>
+        <g fill="#0d0a08"><circle cx="80" cy="22" r="4.5"/><circle cx="124" cy="54" r="4.5"/><circle cx="107" cy="104" r="4.5"/><circle cx="53" cy="104" r="4.5"/><circle cx="36" cy="54" r="4.5"/></g>
+        <circle cx="80" cy="62" r="16" stroke-opacity=".3" stroke-dasharray="1 4"/>
+      </svg>
+      <div><small>01 · Union Bank iDEA 2.0 · Grand Finale</small></div>
+      <div>
+        <strong>GHOSTWIRE</strong>
+        <p>Five agents learn a user’s behavioural DNA and flag anomalies in real time.</p>
+        <p class="sys-stack">LangGraph · LLaMA 3.3 70B · LSTM</p>
+      </div>
+    </div>
+  </div>
+  <div class="sys-card" data-card="aira">
+    <div class="sys-plate">
+      <svg viewBox="0 0 160 120" fill="none" stroke="#c99b6b" stroke-width=".8">
+        <path d="M10 92C40 92 44 30 80 30s40 62 70 62" stroke-opacity=".3"/>
+        <g fill="#e8c49a" stroke="none">
+          <circle cx="12" cy="92" r="2.6" fill-opacity=".35"/><circle cx="27" cy="88" r="2.6" fill-opacity=".42"/><circle cx="41" cy="72" r="2.6" fill-opacity=".5"/><circle cx="54" cy="48" r="2.6" fill-opacity=".58"/><circle cx="68" cy="33" r="2.6" fill-opacity=".66"/><circle cx="92" cy="33" r="2.6" fill-opacity=".74"/><circle cx="106" cy="48" r="2.6" fill-opacity=".8"/><circle cx="119" cy="72" r="2.6" fill-opacity=".86"/><circle cx="133" cy="88" r="2.6" fill-opacity=".92"/><circle cx="148" cy="92" r="3.4"/>
+        </g>
+        <path d="M10 108h140" stroke-opacity=".18" stroke-dasharray="2 4"/>
+      </svg>
+      <div><small>02 · ET AI Hackathon · 2× Semi-Finalist</small></div>
+      <div>
+        <strong>AIRA</strong>
+        <p>A ten-phase multi-agent co-pilot for Indian retail investors.</p>
+        <p class="sys-stack">FastAPI · Supabase · Groq · LLaMA</p>
+      </div>
+    </div>
+  </div>
+  <div class="sys-card" data-card="praana">
+    <div class="sys-plate">
+      <svg viewBox="0 0 160 120" fill="none" stroke="#c99b6b" stroke-width=".8">
+        <rect x="52" y="32" width="56" height="56" rx="3" stroke-opacity=".7"/>
+        <rect x="66" y="46" width="28" height="28" rx="2" fill="#e8c49a" fill-opacity=".14" stroke-opacity=".9"/>
+        <g stroke-opacity=".4"><path d="M62 32V20M74 32V20M86 32V20M98 32V20M62 88v12M74 88v12M86 88v12M98 88v12M52 42H40M52 54H40M52 66H40M52 78H40M108 42h12M108 54h12M108 66h12M108 78h12"/></g>
+        <text x="80" y="63" text-anchor="middle" font-size="6.5" letter-spacing="1.4" fill="#e8c49a" stroke="none" font-family="Outfit, sans-serif">NPU</text>
+      </svg>
+      <div><small>03 · AMD Slingshot · Shortlisted</small></div>
+      <div>
+        <strong>PRAANA</strong>
+        <p>Stress, sleep and study load — read on-device, never sent to a cloud.</p>
+        <p class="sys-stack">AMD Ryzen AI NPU · 5 agents · zero cloud</p>
+      </div>
+    </div>
+  </div>
+  <div class="sys-card" data-card="civicease">
+    <div class="screen-window">
+      <div class="screen-chrome"><i></i><i></i><i></i><span>civicease · voice-first services</span></div>
+      <img src="assets/screen-civicease-900.webp" width="900" height="407" alt="" loading="lazy" decoding="async">
+    </div>
+    <p class="screen-caption"><span class="live-dot"></span>04 · Deployed · Google Startup School</p>
+  </div>
+</div>
+
+<div class="geo-labels" aria-hidden="true">
+  <div class="geo-label" data-marker="rajkot"><span><strong>Rajkot</strong> <em>IN · 22.30° N</em></span></div>
+  <div class="geo-label" data-marker="rostov"><span><strong>Rostov</strong> <em>RU · 47.24° N</em></span></div>
+</div>
+
+<div class="grid-horizontal-line" aria-hidden="true"></div>
+<div class="grid-lines" aria-hidden="true">
+  <div class="grid-line"><div class="grid-dot top"></div><div class="grid-dot bottom"></div></div>
+  <div class="grid-line"><div class="grid-dot top"></div><div class="grid-dot bottom"></div></div>
+  <div class="grid-line"><div class="grid-dot top"></div><div class="grid-dot bottom"></div></div>
+  <div class="grid-line"><div class="grid-dot top"></div><div class="grid-dot bottom"></div></div>
+  <div class="grid-line story-progress-container">
+    <div class="grid-dot top"></div><div class="grid-dot bottom"></div>
+    <div class="story-dashes">
+      <div class="story-dash"><div class="story-dash-fill" id="dash-fill-1"></div></div>
+      <div class="story-dash"><div class="story-dash-fill" id="dash-fill-2"></div></div>
+      <div class="story-dash"><div class="story-dash-fill" id="dash-fill-3"></div></div>
+      <div class="story-dash"><div class="story-dash-fill" id="dash-fill-4"></div></div>
+      <div class="story-dash"><div class="story-dash-fill" id="dash-fill-5"></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="stage-vignette" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<canvas id="webgl" aria-hidden="true"></canvas>
+
+<footer class="site-footer">
+  <span>© 2026 Sri Charan Pitta</span>
+  <span class="footer-mid">Bronze, patience &amp; code</span>
+  <span>Rajkot, IN · <span data-clock>— IST</span> · <button class="back-top" type="button" data-scroll-to="0">Top ↑</button></span>
+</footer>
+
+<!-- FULL DOSSIER -->
+<div class="dossier" id="dossier" role="dialog" aria-modal="true" aria-labelledby="dossier-title" aria-hidden="true" inert>
+  <div class="dossier-topbar">
+    <span class="dossier-wordmark">S · C · Pitta</span>
+    <span class="dossier-tag">Dossier / Curriculum Vitae / 2026</span>
+    <div class="dossier-top-actions">
+      <button class="copy-email" type="button" data-copy-email>Copy email</button>
+      <a href="Sri_Charan_Pitta_CV.pdf" download>PDF ↓</a>
+      <button class="dossier-close" type="button" data-close-dossier>Close <span>×</span></button>
+    </div>
+  </div>
+  <div class="dossier-scroll">
+    <div class="dossier-grid">
+      <aside class="dossier-rail">
+        <p class="rail-label">Index / 08</p>
+        <nav class="rail-nav">
+          <a href="#dossier-profile"><i>01</i>Profile</a>
+          <a href="#dossier-education"><i>02</i>Education</a>
+          <a href="#dossier-experience"><i>03</i>Experience</a>
+          <a href="#dossier-projects"><i>04</i>Projects</a>
+          <a href="#dossier-skills"><i>05</i>Skills</a>
+          <a href="#dossier-leadership"><i>06</i>Leadership</a>
+          <a href="#dossier-recognition"><i>07</i>Recognition</a>
+          <a href="#dossier-evidence"><i>08</i>Evidence</a>
+        </nav>
+        <div class="rail-meta">
+          <strong>Rajkot, Gujarat, India</strong>
+          22.3039° N · 70.8022° E<br>
+          IST (UTC+5:30)<br><br>
+          <span data-clock>— IST</span><br><br>
+          <strong>Status</strong>
+          Open to AI/ML internships &amp; research collaborations
+        </div>
+        <p class="rail-hint">D — open dossier<br>ESC — close<br>↑ ↓ — scroll</p>
+      </aside>
+      <div class="dossier-main">
+        <header class="resume-head">
+          <div>
+            <p class="dossier-eyebrow">Curriculum Vitae · 2026</p>
+            <h2 class="dossier-name" id="dossier-title">Sri Charan<br>Pitta</h2>
+            <p class="dossier-role">AI/ML Researcher · Startup Founder · Google Student Ambassador</p>
+            <p class="dossier-summary">Third-year B.Tech CSE (AI/ML) at Marwadi University. International Research Fellow at Southern Federal University under the Russian Science Foundation Mega-Grant. Founder of ElderAI Swarm — winning finalist and incubated at IIT Madras I-Summit (E-Summit ’26). Two-time ET AI Hackathon semi-finalist. I build production-grade multi-agent AI systems for real-world impact — and I am looking for the next hard problem.</p>
+            <ul class="resume-contact">
+              <li><span>Email</span><a href="mailto:sricharanpittasp6@gmail.com">sricharanpittasp6@gmail.com</a></li>
+              <li><span>Phone</span><a href="tel:+916300053237">+91 63000 53237</a></li>
+              <li><span>LinkedIn</span><a href="https://linkedin.com/in/sri-charan-pitta" target="_blank" rel="noopener noreferrer">/in/sri-charan-pitta</a></li>
+              <li><span>GitHub</span><a href="https://github.com/Sri-Charan-3-1-6" target="_blank" rel="noopener noreferrer">/Sri-Charan-3-1-6</a></li>
+              <li><span>Based</span><span>Rajkot, Gujarat, India</span></li>
+              <li><span>Status</span><span>Open to internships &amp; research</span></li>
+            </ul>
+          </div>
+          <figure class="resume-portrait">
+            <img src="assets/portrait-main-640.webp" srcset="assets/portrait-main-640.webp 640w, assets/portrait-main-1200.webp 1200w" sizes="190px" width="640" height="800" alt="Portrait of Sri Charan Pitta" loading="lazy" decoding="async">
+            <div class="resume-seal" aria-hidden="true">
+              <span class="seal-initials">SCP</span>
+              <span class="seal-caption">fortune favours<br>the forged</span>
+            </div>
+          </figure>
+        </header>
+
+        <section class="dossier-section" id="dossier-profile">
+          <div class="dsection-head"><span>01</span><h3>Profile</h3><span class="dsection-rule"></span></div>
+          <p class="lede">I work at the intersection of applied research and shipped products: multi-agent systems, LLM orchestration, computer vision and on-device intelligence. My work has taken me from a national startup podium at IIT Madras to a funded research exchange in southern Russia.</p>
+          <p>I care about AI that leaves the demo. That has meant building an elder-care platform with five collaborating agents, a fraud-detection system that learns a user’s “behavioural DNA,” a voice-first gateway to government services, and a wellness system that runs entirely on-device. I lead teams, organise hackathons, and build communities around the tools I use.</p>
+          <div class="quick-grid">
+            <div class="quick-item"><span>Currently</span><strong>Founder &amp; Technical Lead, ElderAI Swarm</strong></div>
+            <div class="quick-item"><span>Studying</span><strong>B.Tech CSE — AI/ML, Marwadi University</strong></div>
+            <div class="quick-item"><span>Recognition</span><strong>Google Student Ambassador · Gemini Certified Educator</strong></div>
+          </div>
+        </section>
+
+        <section class="dossier-section" id="dossier-education">
+          <div class="dsection-head"><span>02</span><h3>Education</h3><span class="dsection-rule"></span></div>
+          <div class="xp-item" style="border-top:0">
+            <div class="xp-when">Jul 2024 — May 2028<br>Rajkot, Gujarat</div>
+            <div class="xp-body">
+              <h4 class="xp-role">B.Tech — Computer Science &amp; Engineering</h4>
+              <p class="xp-org">Marwadi University</p>
+              <ul><li>Specialization: Artificial Intelligence &amp; Machine Learning.</li><li>Third year, fifth semester.</li></ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="dossier-section" id="dossier-experience">
+          <div class="dsection-head"><span>03</span><h3>Experience</h3><span class="dsection-rule"></span></div>
+
+          <div class="xp-item">
+            <div class="xp-when">Sep 13—26, 2026<br>Rostov-on-Don, RU</div>
+            <div class="xp-body">
+              <h4 class="xp-role">International Research Fellow — RSF Mega-Grant</h4>
+              <p class="xp-org">Southern Federal University (SFedU) · Fully funded by the Russian Science Foundation</p>
+              <ul>
+                <li>Selected as 1 of 4 students from Marwadi University for a fully-funded two-week international academic research exchange.</li>
+                <li>Conducted AI/ML research on landscape and forage-land productivity under climate change, analysing environmental, satellite and terrain datasets for the Rostov Region.</li>
+                <li>Gave an oral presentation at the RSF 2nd Scientific School for Young Scientists — “Theoretical and practical aspects of creating a digital twin in the fields of agriculture and ecology” — SFedU, Gelendzhik, September 2026.</li>
+                <li>Contributed to the RSF mega-project “Formulation and implementation of a methodology for developing soils digital twin using artificial intelligence and Big Data”, including research meetings with Moscow State University professors.</li>
+                <li>Joined geological field excursions and presented to an international audience from Russia, Kazakhstan and Moscow institutions.</li>
+              </ul>
+              <div class="xp-gallery" data-gallery>
+                <figure><button class="lb-trigger" type="button" data-full="assets/field-handover-800.webp" data-caption="Receiving the RSF participant certificate · SFedU, Rostov-on-Don · September 2026"><img class="d-photo" src="assets/field-handover-800.webp" width="800" height="1000" alt="Sri Charan receiving his RSF participant certificate at Southern Federal University" loading="lazy" decoding="async"></button></figure>
+                <figure><button class="lb-trigger" type="button" data-full="assets/field-sfedu-800.webp" data-caption="Southern Federal University · Academy of Biology &amp; Medicine"><img class="d-photo" src="assets/field-sfedu-800.webp" width="800" height="1000" alt="Southern Federal University, Academy of Biology and Medicine building" loading="lazy" decoding="async"></button></figure>
+                <figure><button class="lb-trigger" type="button" data-full="assets/field-night-800.webp" data-caption="Rostov-on-Don by night · 19 · 09 · 2026"><img class="d-photo" src="assets/field-night-800.webp" width="800" height="1000" alt="An ornate building in Rostov-on-Don lit at night" loading="lazy" decoding="async"></button></figure>
+                <figure><button class="lb-trigger" type="button" data-full="assets/field-cityday-800.webp" data-caption="City Day — Rostov-on-Don turns 277 · 18 · 09 · 2026"><img class="d-photo" src="assets/field-cityday-800.webp" width="800" height="1000" alt="A City Day banner celebrating Rostov-on-Don’s 277th anniversary" loading="lazy" decoding="async"></button></figure>
+              </div>
+            </div>
+          </div>
+
+          <div class="xp-item">
+            <div class="xp-when">2025 — Present<br>Rajkot, IN</div>
+            <div class="xp-body">
+              <h4 class="xp-role">Founder &amp; Technical Lead — ElderAI Swarm</h4>
+              <p class="xp-org">StartupVisors Virtual Incubation Program · IIT Madras I-Summit ’26 · Winning finalist</p>
+              <ul>
+                <li>Founded and architected a five-agent autonomous AI elder-care platform: Medicine Buddy, Emergency Responder, Health Guardian, Daily Companion and Life Coordinator.</li>
+                <li>Built CNN + LSTM fall detection for WearOS and deployed across web, Android, iOS and WearOS.</li>
+                <li>Winning finalist at IIT Madras I-Summit, E-Summit ’26; incubated through StartupVisors and leading the founding team.</li>
+              </ul>
+              <p class="xp-stack">Multi-agent AI · CNN · LSTM · WearOS · Android · iOS · Web</p>
+              <div class="d-window" data-gallery>
+                <div class="d-chrome"><i></i><i></i><i></i><span>elderai-swarm · caregiver dashboard</span></div>
+                <button class="lb-trigger" type="button" data-full="assets/screen-elderai-1800.webp" data-caption="ElderAI Swarm · caregiver dashboard — medication, routines and emergency status in one view"><img src="assets/screen-elderai-900.webp" srcset="assets/screen-elderai-900.webp 900w, assets/screen-elderai-1800.webp 1800w" sizes="(max-width:820px) 90vw, 700px" width="900" height="434" alt="ElderAI Swarm caregiver dashboard showing medication, routines and emergency status" loading="lazy" decoding="async"></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="xp-item">
+            <div class="xp-when">2025 — Present<br>Marwadi University</div>
+            <div class="xp-body">
+              <h4 class="xp-role">Google Student Ambassador</h4>
+              <p class="xp-org">Google · GID 1073 · East-West Region</p>
+              <ul>
+                <li>Serve as the official Google representative at Marwadi University, building an AI developer community.</li>
+                <li>Drive Gemini API and Google Cloud adoption, and bring Google’s innovation ecosystem to students.</li>
+                <li>Gemini Certified University Student &amp; Gemini Certified Educator.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="xp-item">
+            <div class="xp-when">2025 — Present<br>Marwadi University</div>
+            <div class="xp-body">
+              <h4 class="xp-role">Microsoft Community Founding Member</h4>
+              <p class="xp-org">Microsoft · Marwadi University</p>
+              <ul>
+                <li>Founding member of Microsoft’s student community initiative at Marwadi University.</li>
+                <li>Contribute to developer ecosystem expansion, tech community building and collaborative programs bridging students with Microsoft tools and technologies.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="xp-item">
+            <div class="xp-when">2024 · 3 months</div>
+            <div class="xp-body">
+              <h4 class="xp-role">Machine Learning Intern</h4>
+              <p class="xp-org">SmartED</p>
+              <ul>
+                <li>Developed and optimized 5+ supervised ML classification models, improving prediction accuracy by up to 22% across 12,000+ student records.</li>
+                <li>Executed the full pipeline: data preprocessing, feature engineering, model training, hyperparameter tuning and evaluation.</li>
+              </ul>
+              <p class="xp-stack">Python · Scikit-learn · Pandas · NumPy</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="dossier-section" id="dossier-projects">
+          <div class="dsection-head"><span>04</span><h3>Selected Systems</h3><span class="dsection-rule"></span></div>
+
+          <div class="project-card" id="project-ghostwire">
+            <div class="project-card-head"><h4>GHOSTWIRE — 5-Agent AI Fraud Detection</h4><span class="project-award-tag">iDEA 2.0 · Grand Finale</span></div>
+            <p class="project-stack">LangGraph · Groq API · LLaMA 3.3 70B · Isolation Forest · LSTM · FastAPI · React.js</p>
+            <p>A “behavioural DNA” episodic-memory authentication system. Five agents learn each user’s transaction patterns and detect financial anomalies in real time. Grand Finale of iDEA 2.0 by Union Bank of India (₹13L prize pool), K.J. Somaiya, Mumbai.</p>
+          </div>
+
+          <div class="project-card" id="project-aira">
+            <div class="project-card-head"><h4>AIRA — Autonomous AI Financial Assistant</h4><span class="project-award-tag">2× ET AI Semi-Finalist</span></div>
+            <p class="project-stack">FastAPI · Supabase · Groq · LLaMA · React.js · 10-phase multi-agent architecture · NLP</p>
+            <p>A financial co-pilot for Indian retail investors: portfolio analysis, real-time market insight, risk alerts, a Future Simulator and multilingual advisory. Second semi-finalist at both ET AI Hackathon 2025 and ET AI 2.0, 2026.</p>
+          </div>
+
+          <div class="project-card" id="project-praana">
+            <div class="project-card-head"><h4>PRAANA — On-Device Student Wellness</h4><span class="project-award-tag">AMD Slingshot · Shortlisted</span></div>
+            <p class="project-stack">Python · AMD Ryzen AI NPU · 5-agent architecture · On-device deep learning · Zero cloud</p>
+            <p>A five-agent wellness platform running entirely on the AMD Ryzen AI NPU. Monitors stress, sleep quality and academic load locally, with no cloud dependency. Shortlisted at the AMD Slingshot Regional Ideathon, Ahmedabad 2026.</p>
+          </div>
+
+          <div class="project-card" id="project-civicease">
+            <div class="project-card-head"><h4>CivicEase — Voice-First Government Services</h4><span class="project-award-tag">Deployed · Google</span></div>
+            <p class="project-stack">React.js · Node.js · Firebase Cloud Functions · Voice AI · NLP · DigiLocker API</p>
+            <p>A voice-first assistant helping India’s 600M+ low-literacy citizens access government schemes and complete forms entirely by speech — zero typing. Deployed via Firebase Cloud Functions at Google Startup School’s Prompt-to-Prototype program.</p>
+            <div class="d-window" data-gallery>
+              <div class="d-chrome"><i></i><i></i><i></i><span>civicease · voice-first services</span></div>
+              <button class="lb-trigger" type="button" data-full="assets/screen-civicease-1800.webp" data-caption="CivicEase · “Your Digital Companion” — government services by voice"><img src="assets/screen-civicease-900.webp" srcset="assets/screen-civicease-900.webp 900w, assets/screen-civicease-1800.webp 1800w" sizes="(max-width:820px) 90vw, 700px" width="900" height="407" alt="CivicEase landing screen titled Your Digital Companion" loading="lazy" decoding="async"></button>
+            </div>
+          </div>
+
+          <div class="project-card" id="project-chameleon">
+            <div class="project-card-head"><h4>Digital Chameleon — Real-Time CV Privacy</h4><span class="project-award-tag">Shortlisted · B2B Model</span></div>
+            <p class="project-stack">Python · MediaPipe · pyvirtualcam · OpenCV · Computer Vision</p>
+            <p>Real-time webcam identity obfuscation using pose and face detection, protecting privacy during video calls without interrupting the stream. Developed a freemium + B2B enterprise compliance model.</p>
+          </div>
+        </section>
+
+        <section class="dossier-section" id="dossier-skills">
+          <div class="dsection-head"><span>05</span><h3>Technical Skills</h3><span class="dsection-rule"></span></div>
+          <div class="skill-row"><span>Languages</span><span>Python, C, C++, Java</span></div>
+          <div class="skill-row"><span>AI / ML</span><span>Machine Learning, Deep Learning, Neural Networks, NLP, Computer Vision, CNN, LSTM, Transformers, Generative AI</span></div>
+          <div class="skill-row"><span>Frameworks</span><span>TensorFlow, PyTorch, LangGraph, Scikit-learn, Pandas, NumPy, MediaPipe, Hugging Face</span></div>
+          <div class="skill-row"><span>Web / Backend</span><span>React.js, FastAPI, Node.js, Express.js, Firebase, Supabase, REST APIs</span></div>
+          <div class="skill-row"><span>Specialties</span><span>Multi-Agent AI, LLM Orchestration, Voice AI, On-Device AI, Groq API, Gemini API, Agentic AI</span></div>
+          <div class="skill-row"><span>Tools &amp; Cloud</span><span>Git, GitHub, VS Code, Jupyter, Google Colab, Microsoft Azure, Google Cloud Platform</span></div>
+        </section>
+
+        <section class="dossier-section" id="dossier-leadership">
+          <div class="dsection-head"><span>06</span><h3>Leadership &amp; Organizing</h3><span class="dsection-rule"></span></div>
+          <div class="leadership-grid">
+            <div class="lead-item"><h4>President — MU Robotics Club</h4><span>2025 — Present</span><p>Leading technical projects, teams and events. Currently building AgriBot Scout, an AI crop-health monitoring rover.</p></div>
+            <div class="lead-item"><h4>Organizer &amp; Host — PromptWars AI Hackathon</h4><span>July 18, 2026</span><p>Solo organizer, host and operations lead for a full-day AI hackathon with Hack2Skill, Google for Developers and Unstop. MoU signed with faculty.</p></div>
+            <div class="lead-item"><h4>End-to-End Organizer — Intellify National Hackathon</h4><span>Marwadi University</span><p>Complete ownership of registrations, logistics, judging panels, sponsor coordination and real-time operations. Delivered nationwide participation.</p></div>
+            <div class="lead-item"><h4>Co-Organizer — Build with AI Bootcamp</h4><span>Upcoming · 2026</span><p>Campus AI bootcamp with faculty and team: Gemini API, Google Cloud and multi-agent AI development.</p></div>
+          </div>
+          <div class="lead-media" data-gallery>
+            <figure class="wide">
+              <div class="d-video">
+                <video data-pw-video muted loop playsinline preload="none" poster="assets/promptwars-poster.webp" width="1280" height="720" aria-label="Sri Charan speaking on stage as organizer and host of the PromptWars AI Hackathon">
+                  <source src="assets/promptwars-speech.mp4" type="video/mp4">
+                </video>
+                <span class="video-tag">On stage · PromptWars</span>
+                <div class="video-ctrls">
+                  <button type="button" data-video-play aria-pressed="false">Play</button>
+                  <button type="button" data-video-sound aria-pressed="false">Sound off</button>
+                </div>
+              </div>
+              <figcaption class="d-cap"><strong>PromptWars AI Hackathon · opening address</strong>Organizer &amp; host · with Hack2Skill, Google for Developers &amp; Unstop · 18 · 07 · 2026</figcaption>
+            </figure>
+            <figure>
+              <button class="lb-trigger" type="button" data-full="assets/community-promptwars-hall-1200.webp" data-caption="PromptWars AI Hackathon · a full hall · 18 · 07 · 2026"><img class="d-photo" src="assets/community-promptwars-hall-1200.webp" width="1200" height="800" alt="Participants filling the hall at the PromptWars AI Hackathon" loading="lazy" decoding="async"></button>
+              <figcaption class="d-cap"><strong>PromptWars · the hall</strong>Full-day build, Marwadi University</figcaption>
+            </figure>
+            <figure>
+              <button class="lb-trigger" type="button" data-full="assets/community-intellify-crew-1600.webp" data-caption="Intellify National Hackathon · the organizing crew"><img class="d-photo" src="assets/community-intellify-crew-800.webp" srcset="assets/community-intellify-crew-800.webp 800w, assets/community-intellify-crew-1600.webp 1600w" sizes="(max-width:820px) 90vw, 440px" width="800" height="533" alt="The Intellify National Hackathon organizing crew in matching black T-shirts" loading="lazy" decoding="async"></button>
+              <figcaption class="d-cap"><strong>Intellify · organizing crew</strong>National hackathon, end to end</figcaption>
+            </figure>
+            <figure>
+              <button class="lb-trigger" type="button" data-full="assets/community-intellify-core-1200.webp" data-caption="Intellify National Hackathon · core team"><img class="d-photo" src="assets/community-intellify-core-1200.webp" width="1200" height="800" alt="The Intellify core team seated together" loading="lazy" decoding="async"></button>
+              <figcaption class="d-cap"><strong>Intellify · core team</strong>Registrations, judging, operations</figcaption>
+            </figure>
+            <figure>
+              <button class="lb-trigger" type="button" data-full="assets/community-intellify-table-1200.webp" data-caption="Intellify National Hackathon · operations huddle"><img class="d-photo" src="assets/community-intellify-table-1200.webp" width="1200" height="800" alt="Organizers in a huddle around a table during Intellify" loading="lazy" decoding="async"></button>
+              <figcaption class="d-cap"><strong>Intellify · ops huddle</strong>Real-time operations</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="dossier-section" id="dossier-recognition">
+          <div class="dsection-head"><span>07</span><h3>Recognition</h3><span class="dsection-rule"></span></div>
+          <div class="award-row"><span>Winning finalist &amp; incubated — IIT Madras I-Summit, E-Summit ’26 (ElderAI Swarm)</span><span>National</span></div>
+          <div class="award-row"><span>Grand Finale — iDEA 2.0, Union Bank of India (GHOSTWIRE)</span><span>2026</span></div>
+          <div class="award-row"><span>2nd Semi-Finalist — ET AI Hackathon 2025 &amp; ET AI 2.0 2026 (AIRA)</span><span>National</span></div>
+          <div class="award-row"><span>Shortlisted — AMD Slingshot Regional Ideathon, Ahmedabad (PRAANA)</span><span>2026</span></div>
+          <div class="award-row"><span>Shortlisted — HCLTech HackerEarth AI Challenge</span><span>Sole rep · MU</span></div>
+          <div class="award-row"><span>Participant — National Entrepreneurship Challenge 2026, IIT Bombay E-Cell</span><span>National</span></div>
+          <div class="award-row"><span>Google Student Ambassador · Gemini Certified University Student &amp; Educator</span><span>Google</span></div>
+          <div class="award-row"><span>Microsoft Community Founding Member · Marwadi University</span><span>Microsoft</span></div>
+        </section>
+
+        <section class="dossier-section" id="dossier-evidence">
+          <div class="dsection-head"><span>08</span><h3>Evidence</h3><span class="dsection-rule"></span></div>
+          <p class="ev-intro">The documents and places behind the lines above. Select any plate to view it full size.</p>
+          <p class="ev-label">Certificates</p>
+          <div class="ev-grid" data-gallery>
+            <figure class="ev-item ev-wide">
+              <button class="lb-trigger" type="button" data-full="assets/cert-iit-1600.webp" data-caption="IIT Madras I-Summit · E-Summit ’26 — finalist certificate, ElderAI Swarm (winning finalists were incubated)"><div class="ev-mat" style="--ar:4/3"><img src="assets/cert-iit-560.webp" srcset="assets/cert-iit-560.webp 560w, assets/cert-iit-1600.webp 1600w" sizes="(max-width:820px) 90vw, 430px" width="560" height="396" alt="IIT Madras I-Summit finalist certificate" loading="lazy" decoding="async"></div></button>
+              <figcaption class="d-cap"><strong>IIT Madras I-Summit · E-Summit ’26</strong>Winning finalist · incubated</figcaption>
+            </figure>
+            <figure class="ev-item ev-wide">
+              <button class="lb-trigger" type="button" data-full="assets/cert-promptwars-1400.webp" data-caption="PromptWars AI Hackathon — organizer certificate · 18 · 07 · 2026"><div class="ev-mat" style="--ar:4/3"><img src="assets/cert-promptwars-560.webp" srcset="assets/cert-promptwars-560.webp 560w, assets/cert-promptwars-1400.webp 1400w" sizes="(max-width:820px) 90vw, 430px" width="560" height="421" alt="PromptWars AI Hackathon organizer certificate" loading="lazy" decoding="async"></div></button>
+              <figcaption class="d-cap"><strong>PromptWars AI Hackathon</strong>Organizer · 18 · 07 · 2026</figcaption>
+            </figure>
+            <figure class="ev-item">
+              <button class="lb-trigger" type="button" data-full="assets/cert-rsf-1200.webp" data-caption="Russian Science Foundation — oral presentation, 2nd Scientific School for Young Scientists · SFedU, Gelendzhik · September 2026"><div class="ev-mat"><img src="assets/cert-rsf-420.webp" width="420" height="624" alt="Russian Science Foundation participant certificate for an oral presentation" loading="lazy" decoding="async"></div></button>
+              <figcaption class="d-cap"><strong>Russian Science Foundation</strong>Oral presentation · Gelendzhik</figcaption>
+            </figure>
+            <figure class="ev-item">
+              <button class="lb-trigger" type="button" data-full="assets/cert-et-1200.webp" data-caption="ET AI Hackathon 2026 — semi-finalist certificate · 7 May 2026"><div class="ev-mat"><img src="assets/cert-et-420.webp" width="420" height="593" alt="ET AI Hackathon 2026 semi-finalist certificate" loading="lazy" decoding="async"></div></button>
+              <figcaption class="d-cap"><strong>ET AI Hackathon 2026</strong>Semi-finalist · AIRA</figcaption>
+            </figure>
+            <figure class="ev-item">
+              <button class="lb-trigger" type="button" data-full="assets/field-handover-800.webp" data-caption="Receiving the RSF participant certificate · SFedU, Rostov-on-Don · September 2026"><div class="ev-mat is-photo"><img src="assets/field-handover-800.webp" width="800" height="1000" alt="Sri Charan receiving his RSF certificate" loading="lazy" decoding="async"></div></button>
+              <figcaption class="d-cap"><strong>The handover</strong>SFedU · Rostov-on-Don</figcaption>
+            </figure>
+            <figure class="ev-item">
+              <button class="lb-trigger" type="button" data-full="assets/portrait-intellify-900.webp" data-caption="At the Intellify National Hackathon · 16 · 08 · 2026"><div class="ev-mat is-photo"><img src="assets/portrait-intellify-900.webp" width="900" height="1125" alt="Sri Charan seated at the Intellify National Hackathon" loading="lazy" decoding="async"></div></button>
+              <figcaption class="d-cap"><strong>Intellify, on the floor</strong>16 · 08 · 2026</figcaption>
+            </figure>
+          </div>
+          <p class="ev-label">Field archive · Rostov-on-Don, Sep 2026</p>
+          <div class="ev-strip" data-gallery tabindex="0" aria-label="Rostov-on-Don field archive, scrollable">
+            <figure><button class="lb-trigger" type="button" data-full="assets/rostov-ornate-1200.webp" data-caption="Historic façade · central Rostov-on-Don · 16 · 09"><img class="d-photo" src="assets/rostov-ornate-1200.webp" width="1200" height="800" alt="An ornate historic façade in central Rostov-on-Don" loading="lazy" decoding="async"></button><figcaption class="d-cap">Old town · 16.09</figcaption></figure>
+            <figure><button class="lb-trigger" type="button" data-full="assets/rostov-people-1200.webp" data-caption="“#Страну меняют люди” — people change the country · 16 · 09"><img class="d-photo" src="assets/rostov-people-1200.webp" width="1200" height="800" alt="A street installation reading “#Страну меняют люди”" loading="lazy" decoding="async"></button><figcaption class="d-cap">“People change the country” · 16.09</figcaption></figure>
+            <figure><button class="lb-trigger" type="button" data-full="assets/rostov-autumn-1200.webp" data-caption="First autumn in Rostov-on-Don · 17 · 09"><img class="d-photo" src="assets/rostov-autumn-1200.webp" width="1200" height="800" alt="Autumn trees in front of apartment blocks in Rostov-on-Don" loading="lazy" decoding="async"></button><figcaption class="d-cap">First autumn · 17.09</figcaption></figure>
+            <figure><button class="lb-trigger" type="button" data-full="assets/rostov-square-1200.webp" data-caption="Rostov-on-Don from above, City Day evening · 18 · 09"><img class="d-photo" src="assets/rostov-square-1200.webp" width="1200" height="800" alt="Rostov-on-Don city square from above at night" loading="lazy" decoding="async"></button><figcaption class="d-cap">From above · 18.09</figcaption></figure>
+            <figure><button class="lb-trigger" type="button" data-full="assets/rostov-brick-1200.webp" data-caption="Red-brick façade · Rostov-on-Don · 20 · 09"><img class="d-photo" src="assets/rostov-brick-1200.webp" width="1200" height="800" alt="A red-brick historic building in Rostov-on-Don" loading="lazy" decoding="async"></button><figcaption class="d-cap">Red brick · 20.09</figcaption></figure>
+          </div>
+        </section>
+
+        <footer class="dossier-footer">
+          <p>© 2026 Sri Charan Pitta · Rajkot, India</p>
+          <div style="display:flex;gap:20px;flex-wrap:wrap">
+            <button class="dossier-print" type="button" data-print>Print this dossier</button>
+            <a href="Sri_Charan_Pitta_CV.pdf" download>Download PDF ↓</a>
+            <a href="#" data-close-dossier>Return to the stage ↑</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" aria-hidden="true" hidden>
+  <div class="lb-stage"><img alt=""></div>
+  <div class="lb-bar"><p class="lb-caption"></p><span class="lb-count"></span></div>
+  <button class="lb-btn lb-close" type="button" aria-label="Close viewer">×</button>
+  <button class="lb-btn lb-prev" type="button" aria-label="Previous image">←</button>
+  <button class="lb-btn lb-next" type="button" aria-label="Next image">→</button>
+</div>
+
+<div class="toast" role="status" aria-live="polite"></div>
+<noscript>
+  <div class="no-js-fallback">
+    <p class="slide-kicker" style="opacity:1;transform:none">SCP — Portfolio 2026</p>
+    <h1 style="font-family:Italiana,serif;font-size:56px;font-weight:400;line-height:1">Sri Charan<br>Pitta</h1>
+    <p style="max-width:44ch;color:#cfc7bd;font-weight:300;line-height:1.7;font-size:14px">AI/ML researcher, founder of ElderAI Swarm, Google Student Ambassador. The cinematic version of this page needs JavaScript and WebGL.</p>
+    <p><a class="contact-btn" href="mailto:sricharanpittasp6@gmail.com">Email me</a> &nbsp; <a class="text-link" href="Sri_Charan_Pitta_CV.pdf" download>Download CV</a></p>
+  </div>
+</noscript>
+
+<script>
+(function(){
+  'use strict';
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const body = document.body;
+  const root = document.documentElement;
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const slide1 = document.getElementById('slide-1');
+  const imageMask = document.getElementById('slide-2-img');
+  const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+  const fills = [1,2,3,4,5].map(i => document.getElementById('dash-fill-' + i));
+  const footer = document.querySelector('.site-footer');
+  const dossier = document.getElementById('dossier');
+  const toast = document.querySelector('.toast');
+  let lastFocused = null;
+  let toastTimer = null;
+
+  /* split titles into unbreakable lines, then into per-letter spans */
+  function splitTitles(){
+    document.querySelectorAll('.slide-title').forEach(title => {
+      if (title.dataset.split === 'true') return;
+      const lines = [[]];
+      Array.from(title.childNodes).forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE){
+          lines[lines.length - 1].push(...Array.from(node.textContent));
+        } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'BR'){
+          lines.push([]);
+        }
+      });
+      let counter = 0;
+      const frag = document.createDocumentFragment();
+      lines.forEach(chars => {
+        if (!chars.length) return;
+        const line = document.createElement('span');
+        line.className = 'title-line';
+        chars.forEach(ch => {
+          if (ch === ' '){
+            line.appendChild(document.createTextNode(' '));
+            return;
+          }
+          const span = document.createElement('span');
+          span.className = 'char';
+          span.style.transitionDelay = (counter * 0.035) + 's';
+          span.textContent = ch;
+          line.appendChild(span);
+          counter++;
+        });
+        frag.appendChild(line);
+      });
+      title.replaceChildren(frag);
+      title.dataset.split = 'true';
+    });
+  }
+  splitTitles();
+  // re-arm the hero reveal so the per-letter transitions actually play on load
+  if (slide1){
+    slide1.classList.remove('is-active');
+    void slide1.offsetWidth;
+    requestAnimationFrame(() => slide1.classList.add('is-active'));
+  }
+
+  /* cursor */
+  let cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+  let ox = cx, oy = cy;
+  const cursorInner = document.querySelector('.cursor-inner');
+  const cursorOuter = document.querySelector('.cursor-outer');
+  if (cursorInner){ cursorInner.style.left = cx + 'px'; cursorInner.style.top = cy + 'px'; }
+  if (cursorOuter){ cursorOuter.style.left = ox + 'px'; cursorOuter.style.top = oy + 'px'; }
+  window.addEventListener('mousemove', (e) => {
+    cx = e.clientX; cy = e.clientY;
+    if (cursorInner){ cursorInner.style.left = cx + 'px'; cursorInner.style.top = cy + 'px'; }
+    body.classList.remove('cursor-hidden');
+  }, {passive:true});
+  document.addEventListener('mouseleave', () => body.classList.add('cursor-hidden'));
+  document.addEventListener('mouseenter', () => body.classList.remove('cursor-hidden'));
+  document.addEventListener('mouseover', (e) => {
+    if (!cursorOuter || !cursorInner) return;
+    const hit = e.target.closest('a, button, [data-open-dossier]');
+    cursorOuter.classList.toggle('is-hover', !!hit);
+    cursorInner.classList.toggle('is-hover', !!hit);
+  });
+
+  /* scroll driven ui */
+  function maxScroll(){ return Math.max(0, root.scrollHeight - window.innerHeight); }
+  function scrollToFraction(f){
+    window.scrollTo({top: maxScroll() * f, behavior: reduceMotion ? 'auto' : 'smooth'});
+  }
+  document.querySelectorAll('[data-scroll-to]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (dossier.classList.contains('is-open')) closeDossier();
+      scrollToFraction(parseFloat(el.dataset.scrollTo || '0'));
+    });
+  });
+
+  const ranges = [
+    {el: document.getElementById('slide-1'), start: -0.10, end: 0.12},
+    {el: document.getElementById('slide-2'), start: 0.24, end: 0.38},
+    {el: document.getElementById('slide-3'), start: 0.48, end: 0.62},
+    {el: document.getElementById('slide-4'), start: 0.70, end: 0.84},
+    {el: document.getElementById('slide-5'), start: 0.90, end: 1.06}
+  ];
+  let activeIndex = 0;
+  let lastNav = -1;
+  let lastFooter = false;
+
+  /* research reel */
+  const founderScreen = document.getElementById('founder-screen');
+  const reelFrames = imageMask ? Array.from(imageMask.querySelectorAll('.reel-frame')) : [];
+  const reelIndexEl = imageMask && imageMask.querySelector('[data-reel-index]');
+  const reelPlaceEl = imageMask && imageMask.querySelector('[data-reel-place]');
+  const reelCaptionEl = imageMask && imageMask.querySelector('[data-reel-caption]');
+  const reelCaptionWrap = imageMask && imageMask.querySelector('.reel-caption');
+  const reelBar = imageMask && imageMask.querySelector('.reel-progress span');
+  const REEL_MS = 4200;
+  let reelIndex = 0, reelTimer = null;
+  function runBar(){
+    if (!reelBar || reduceMotion) return;
+    reelBar.classList.remove('run');
+    void reelBar.offsetWidth;
+    reelBar.classList.add('run');
+  }
+  function showFrame(i){
+    reelIndex = (i + reelFrames.length) % reelFrames.length;
+    const frame = reelFrames[reelIndex];
+    reelFrames.forEach(f => f.classList.toggle('is-current', f === frame));
+    if (reelIndexEl) reelIndexEl.textContent = String(reelIndex + 1).padStart(2, '0');
+    if (reelCaptionWrap){
+      reelCaptionWrap.classList.add('is-swapping');
+      setTimeout(() => {
+        reelPlaceEl.textContent = frame.dataset.place;
+        reelCaptionEl.textContent = frame.dataset.caption;
+        reelCaptionWrap.classList.remove('is-swapping');
+      }, 380);
+    }
+    runBar();
+  }
+  function startReel(){
+    if (!reelFrames.length || reduceMotion) return;
+    clearInterval(reelTimer);
+    runBar();
+    reelTimer = setInterval(() => showFrame(reelIndex + 1), REEL_MS);
+  }
+  function stopReel(){
+    clearInterval(reelTimer);
+    reelTimer = null;
+    if (reelBar) reelBar.classList.remove('run');
+  }
+  if (imageMask) imageMask.style.setProperty('--reel-ms', REEL_MS + 'ms');
+
+  /* systems hover preview */
+  const sysPreview = document.getElementById('sys-preview');
+  const sysCards = sysPreview ? Array.from(sysPreview.querySelectorAll('.sys-card')) : [];
+  const projectList = document.querySelector('.project-list');
+  let px = cx, py = cy, sysVisible = false;
+  function hidePreview(){
+    sysVisible = false;
+    sysPreview.classList.remove('is-visible');
+  }
+  if (sysPreview && finePointer){
+    document.querySelectorAll('.project-row[data-preview]').forEach(row => {
+      row.addEventListener('mouseenter', () => {
+        if (window.innerWidth <= 980) return;
+        const key = row.dataset.preview;
+        sysCards.forEach(c => c.classList.toggle('is-current', c.dataset.card === key));
+        if (!sysVisible && projectList){ const r = projectList.getBoundingClientRect(); px = Math.min(r.right - 150, Math.max(r.left + 150, cx)); py = r.top - 120; }
+        sysVisible = true;
+        sysPreview.classList.add('is-visible');
+      });
+      row.addEventListener('mouseleave', hidePreview);
+      row.addEventListener('click', hidePreview);
+    });
+  }
+
+  function updateUI(){
+    const max = maxScroll();
+    const scroll = max > 0 ? window.scrollY / max : 0;
+    let current = -1;
+    ranges.forEach((r, i) => {
+      if (!r.el) return;
+      const active = scroll >= r.start && scroll <= r.end;
+      if (r.el.classList.contains('is-active') !== active) r.el.classList.toggle('is-active', active);
+      if (active) current = i;
+    });
+    if (current !== -1) activeIndex = current;
+    if (imageMask){
+      const active2 = scroll >= 0.24 && scroll <= 0.38;
+      if (imageMask.classList.contains('active') !== active2){
+        imageMask.classList.toggle('active', active2);
+        active2 ? startReel() : stopReel();
+      }
+    }
+    if (founderScreen){
+      const active3 = scroll >= 0.48 && scroll <= 0.62;
+      if (founderScreen.classList.contains('active') !== active3) founderScreen.classList.toggle('active', active3);
+    }
+    if (sysPreview){
+      if (sysVisible && (activeIndex !== 3 || dossier.classList.contains('is-open'))) hidePreview();
+      const lr = projectList ? projectList.getBoundingClientRect() : {left:0,right:innerWidth,top:innerHeight/2};
+      const half = sysPreview.offsetWidth / 2;
+      const tx = Math.min(lr.right - half, Math.max(lr.left + half, cx));
+      const ty = Math.max(90 + sysPreview.offsetHeight / 2, lr.top - 26 - sysPreview.offsetHeight / 2);
+      px += (tx - px) * 0.14;
+      py += (ty - py) * 0.14;
+      sysPreview.style.left = px.toFixed(1) + 'px';
+      sysPreview.style.top = py.toFixed(1) + 'px';
+    }
+    // stories-style progress
+    fills.forEach((fill, i) => {
+      if (!fill) return;
+      const start = i * 0.2;
+      const p = Math.max(0, Math.min(1, (scroll - start) / 0.2));
+      fill.style.height = (p * 100).toFixed(2) + '%';
+    });
+    const navIndex = activeIndex >= 1 && activeIndex <= 4 ? activeIndex - 1 : -1;
+    if (navIndex !== lastNav){
+      navLinks.forEach((link, i) => link.classList.toggle('is-active', i === navIndex));
+      lastNav = navIndex;
+    }
+    const showFooter = scroll > 0.885 && !dossier.classList.contains('is-open');
+    if (showFooter !== lastFooter){
+      footer.classList.toggle('is-visible', showFooter);
+      lastFooter = showFooter;
+    }
+    if (cursorOuter){
+      ox += (cx - ox) * 0.18;
+      oy += (cy - oy) * 0.18;
+      cursorOuter.style.left = ox + 'px';
+      cursorOuter.style.top = oy + 'px';
+    }
+  }
+  function uiLoop(){
+    updateUI();
+    requestAnimationFrame(uiLoop);
+  }
+  requestAnimationFrame(uiLoop);
+
+  /* drift dots */
+  function driftDots(){
+    const dots = document.querySelectorAll('.grid-dot');
+    const max = maxScroll();
+    const scroll = max > 0 ? window.scrollY / max : 0;
+    dots.forEach((dot, i) => {
+      const startY = (i * 17) % 80 + 10;
+      let speed = 90 + (i * 55) % 180;
+      if (i % 2 === 0) speed = -speed;
+      let y = startY + scroll * speed;
+      y = ((y % 100) + 100) % 100;
+      dot.style.top = y + '%';
+    });
+    requestAnimationFrame(driftDots);
+  }
+  requestAnimationFrame(driftDots);
+
+  /* clock */
+  function tick(){
+    let time = '';
+    try {
+      time = new Intl.DateTimeFormat('en-GB', {timeZone:'Asia/Kolkata', hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false}).format(new Date());
+    } catch(e) { time = '—'; }
+    document.querySelectorAll('[data-clock]').forEach(el => { el.textContent = time + ' IST'; });
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  /* dossier */
+  const openers = Array.from(document.querySelectorAll('[data-open-dossier]'));
+  const closers = Array.from(document.querySelectorAll('[data-close-dossier]'));
+  const copyBtn = document.querySelector('[data-copy-email]');
+  const printBtn = document.querySelector('[data-print]');
+
+  function showToast(message){
+    if (!toast) return;
+    toast.textContent = message;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2400);
+  }
+  function openDossier(targetId){
+    if (!dossier) return;
+    lastFocused = document.activeElement;
+    dossier.inert = false;
+    dossier.setAttribute('aria-hidden', 'false');
+    body.classList.add('dossier-open');
+    root.classList.add('dossier-open');
+    requestAnimationFrame(() => {
+      dossier.classList.add('is-open');
+    });
+    footer.classList.remove('is-visible');
+    setTimeout(() => {
+      const close = dossier.querySelector('[data-close-dossier]');
+      if (close) close.focus({preventScroll:true});
+      if (targetId){
+        const el = document.getElementById(targetId);
+        if (el) el.scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth', block:'start'});
+      }
+    }, 120);
+  }
+  function closeDossier(){
+    if (!dossier) return;
+    dossier.classList.remove('is-open');
+    body.classList.remove('dossier-open');
+    root.classList.remove('dossier-open');
+    dossier.inert = true;
+    setTimeout(() => dossier.setAttribute('aria-hidden', 'true'), 650);
+    if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus({preventScroll:true});
+  }
+  openers.forEach(el => el.addEventListener('click', (e) => {
+    e.preventDefault();
+    openDossier(el.dataset.target || null);
+  }));
+  closers.forEach(el => el.addEventListener('click', (e) => {
+    e.preventDefault();
+    closeDossier();
+  }));
+  document.addEventListener('keydown', (e) => {
+    const open = dossier && dossier.classList.contains('is-open');
+    if (e.key === 'Escape' && open){ closeDossier(); return; }
+    if ((e.key === 'd' || e.key === 'D') && !open && !e.metaKey && !e.ctrlKey && !e.altKey){
+      const tag = (e.target.tagName || '').toLowerCase();
+      if (tag !== 'input' && tag !== 'textarea' && tag !== 'select') openDossier();
+    }
+    if (open && e.key === 'Tab'){
+      const focusables = Array.from(dossier.querySelectorAll('a[href], button:not([disabled])')).filter(el => el.offsetParent !== null);
+      if (!focusables.length) return;
+      const first = focusables[0], last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+    }
+  });
+  if (copyBtn){
+    copyBtn.addEventListener('click', async () => {
+      const email = 'sricharanpittasp6@gmail.com';
+      try {
+        await navigator.clipboard.writeText(email);
+        showToast('Email copied');
+      } catch(e) {
+        showToast(email);
+      }
+    });
+  }
+  if (printBtn){ printBtn.addEventListener('click', () => window.print()); }
+
+  const lb = document.querySelector('.lightbox');
+  const lbImg = lb.querySelector('.lb-stage img');
+  const lbStage = lb.querySelector('.lb-stage');
+  const lbCaption = lb.querySelector('.lb-caption');
+  const lbCount = lb.querySelector('.lb-count');
+  const lbClose = lb.querySelector('.lb-close');
+  const lbPrev = lb.querySelector('.lb-prev');
+  const lbNext = lb.querySelector('.lb-next');
+  let lbItems = [], lbIndex = 0, lbOpener = null, lbHideTimer = null;
+  const pad2 = n => String(n).padStart(2, '0');
+
+  function renderLb(){
+    const t = lbItems[lbIndex];
+    const inner = t.querySelector('img');
+    lbImg.classList.add('is-loading');
+    lbImg.onload = () => lbImg.classList.remove('is-loading');
+    lbImg.src = t.dataset.full;
+    lbImg.alt = inner ? inner.alt : '';
+    lbCaption.textContent = t.dataset.caption || '';
+    lbCount.textContent = pad2(lbIndex + 1) + ' / ' + pad2(lbItems.length);
+    const single = lbItems.length < 2;
+    lbPrev.hidden = single;
+    lbNext.hidden = single;
+    lbCount.hidden = single;
+  }
+  function stepLb(d){
+    if (lbItems.length < 2) return;
+    lbIndex = (lbIndex + d + lbItems.length) % lbItems.length;
+    renderLb();
+  }
+  function openLb(trigger){
+    const group = trigger.closest('[data-gallery]');
+    lbItems = group ? Array.from(group.querySelectorAll('.lb-trigger')) : [trigger];
+    lbIndex = Math.max(0, lbItems.indexOf(trigger));
+    lbOpener = trigger;
+    clearTimeout(lbHideTimer);
+    renderLb();
+    lb.hidden = false;
+    void lb.offsetWidth;
+    lb.classList.add('is-open');
+    lb.setAttribute('aria-hidden', 'false');
+    dossier.inert = true;
+    lbClose.focus({preventScroll:true});
+  }
+  function closeLb(){
+    lb.classList.remove('is-open');
+    lb.setAttribute('aria-hidden', 'true');
+    dossier.inert = false;
+    lbHideTimer = setTimeout(() => { lb.hidden = true; lbImg.removeAttribute('src'); }, 350);
+    if (lbOpener) lbOpener.focus({preventScroll:true});
+  }
+  document.querySelectorAll('.lb-trigger').forEach(t => t.addEventListener('click', () => openLb(t)));
+  lbClose.addEventListener('click', closeLb);
+  lbPrev.addEventListener('click', () => stepLb(-1));
+  lbNext.addEventListener('click', () => stepLb(1));
+  lbStage.addEventListener('click', (e) => { if (e.target !== lbImg) closeLb(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('is-open')) return;
+    e.stopPropagation();
+    if (e.key === 'Escape'){ e.preventDefault(); closeLb(); }
+    else if (e.key === 'ArrowLeft'){ e.preventDefault(); stepLb(-1); }
+    else if (e.key === 'ArrowRight'){ e.preventDefault(); stepLb(1); }
+    else if (e.key === 'Tab'){
+      const f = [lbClose, lbPrev, lbNext].filter(b => !b.hidden);
+      const i = f.indexOf(document.activeElement);
+      e.preventDefault();
+      f[(i + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
+    }
+  }, true);
+
+  const pwVideo = document.querySelector('[data-pw-video]');
+  if (pwVideo){
+    const playBtn = document.querySelector('[data-video-play]');
+    const soundBtn = document.querySelector('[data-video-sound]');
+    const scroller = dossier.querySelector('.dossier-scroll');
+    let inView = false, userPaused = false;
+    const syncButtons = () => {
+      const playing = !pwVideo.paused;
+      playBtn.textContent = playing ? 'Pause' : 'Play';
+      playBtn.setAttribute('aria-pressed', String(playing));
+      soundBtn.textContent = pwVideo.muted ? 'Sound off' : 'Sound on';
+      soundBtn.setAttribute('aria-pressed', String(!pwVideo.muted));
+    };
+    const evaluate = () => {
+      const canPlay = dossier.classList.contains('is-open') && inView && !userPaused && !reduceMotion;
+      if (canPlay && pwVideo.paused) pwVideo.play().catch(() => {});
+      else if (!canPlay && !pwVideo.paused && (!inView || !dossier.classList.contains('is-open'))) pwVideo.pause();
+    };
+    new IntersectionObserver(entries => {
+      inView = entries[0].isIntersecting;
+      evaluate();
+    }, {root: scroller, threshold: 0.5}).observe(pwVideo);
+    new MutationObserver(evaluate).observe(dossier, {attributes:true, attributeFilter:['class']});
+    pwVideo.addEventListener('play', syncButtons);
+    pwVideo.addEventListener('pause', syncButtons);
+    pwVideo.addEventListener('volumechange', syncButtons);
+    playBtn.addEventListener('click', () => {
+      if (pwVideo.paused){ userPaused = false; pwVideo.play().catch(() => {}); }
+      else { userPaused = true; pwVideo.pause(); }
+    });
+    soundBtn.addEventListener('click', () => {
+      pwVideo.muted = !pwVideo.muted;
+      if (!pwVideo.muted && pwVideo.paused){ userPaused = false; pwVideo.play().catch(() => {}); }
+    });
+    syncButtons();
+  }
+})();
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+
+const canvas = document.querySelector('#webgl');
+const body = document.body;
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+let scene, camera, renderer, artifact, coreMesh, sparkParticles, bgMaterial;
+let envTexture, arcBead, orbitBead, orbitGroup;
+let cameraOrbitReady = false;
+let currentScroll = 0;
+let targetScrollValue = 0;
+let mouseX = 0, mouseY = 0, targetMouseX = 0, targetMouseY = 0;
+const clock = new THREE.Clock();
+const sparkData = [];
+const sparkCount = window.innerWidth < 768 ? 220 : 450;
+const sizes = {width: window.innerWidth, height: window.innerHeight};
+const shaderUniforms = {
+  uTime: {value: 0},
+  uResolution: {value: new THREE.Vector2(sizes.width, sizes.height)},
+  uMouse: {value: new THREE.Vector2(0,0)},
+  uScroll: {value: 0}
+};
+const markerDefs = [];
+const geoLabels = Array.from(document.querySelectorAll('.geo-label'));
+let labelFade = 1;
+
+function srgb(hex){ return hex; }
+
+/* ---------- procedural textures ---------- */
+function createBronzeTexture(){
+  const c = document.createElement('canvas');
+  c.width = 1024; c.height = 512;
+  const ctx = c.getContext('2d');
+  const grad = ctx.createLinearGradient(0, 0, 1024, 512);
+  grad.addColorStop(0, '#241109');
+  grad.addColorStop(.28, '#5a321b');
+  grad.addColorStop(.52, '#8e5b33');
+  grad.addColorStop(.72, '#4f2a15');
+  grad.addColorStop(1, '#1b0d06');
+  ctx.fillStyle = grad; ctx.fillRect(0, 0, 1024, 512);
+  const tones = [
+    'rgba(212,151,94,.15)', 'rgba(255,205,150,.09)', 'rgba(73,39,20,.22)',
+    'rgba(10,5,3,.28)', 'rgba(154,93,50,.13)', 'rgba(70,110,120,.045)'
+  ];
+  for (let i = 0; i < 540; i++){
+    const x = Math.random() * 1024, y = Math.random() * 512, r = 10 + Math.random() * 135;
+    const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+    const tone = tones[Math.floor(Math.random() * tones.length)];
+    g.addColorStop(0, tone);
+    g.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill();
+  }
+  for (let i = 0; i < 190; i++){
+    const x = Math.random() * 1024, y = Math.random() * 512;
+    ctx.strokeStyle = 'rgba(255,219,174,' + (Math.random() * .06) + ')';
+    ctx.lineWidth = .4 + Math.random() * 1.1;
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.bezierCurveTo(x + Math.random()*120, y + (Math.random()-.5)*30, x + Math.random()*230, y + (Math.random()-.5)*24, x + 260 + Math.random()*260, y + (Math.random()-.5)*40);
+    ctx.stroke();
+  }
+  const img = ctx.getImageData(0, 0, 1024, 512);
+  const d = img.data;
+  for (let i = 0; i < d.length; i += 4){
+    const n = (Math.random() - .5) * 16;
+    d[i] = Math.max(0, Math.min(255, d[i] + n));
+    d[i+1] = Math.max(0, Math.min(255, d[i+1] + n));
+    d[i+2] = Math.max(0, Math.min(255, d[i+2] + n));
+  }
+  ctx.putImageData(img, 0, 0);
+  const tex = new THREE.CanvasTexture(c);
+  tex.wrapS = THREE.RepeatWrapping;
+  tex.wrapT = THREE.RepeatWrapping;
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+  return tex;
+}
+
+function createStudioEnvironment(){
+  const c = document.createElement('canvas');
+  c.width = 1024; c.height = 512;
+  const ctx = c.getContext('2d');
+  ctx.fillStyle = '#040404'; ctx.fillRect(0, 0, 1024, 512);
+  const glows = [
+    {x: 760, y: 170, r: 290, color: 'rgba(255,204,150,.95)'},
+    {x: 200, y: 230, r: 280, color: 'rgba(122,170,255,.62)'},
+    {x: 510, y: 470, r: 400, color: 'rgba(255,146,74,.22)'},
+    {x: 500, y: 84, r: 200, color: 'rgba(255,255,255,.36)'},
+    {x: 930, y: 360, r: 210, color: 'rgba(160,195,255,.18)'}
+  ];
+  ctx.globalCompositeOperation = 'lighter';
+  glows.forEach(g => {
+    const rg = ctx.createRadialGradient(g.x, g.y, 0, g.x, g.y, g.r);
+    rg.addColorStop(0, g.color);
+    rg.addColorStop(.45, g.color.replace(/[\d.]+\)$/, '.28)'));
+    rg.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = rg;
+    ctx.fillRect(0, 0, 1024, 512);
+  });
+  ctx.fillStyle = 'rgba(255,244,224,.8)';
+  ctx.fillRect(690, 118, 130, 17);
+  ctx.fillStyle = 'rgba(175,210,255,.55)';
+  ctx.fillRect(210, 300, 90, 10);
+  ctx.fillStyle = 'rgba(255,212,164,.5)';
+  ctx.fillRect(410, 70, 70, 7);
+  const tex = new THREE.CanvasTexture(c);
+  tex.mapping = THREE.EquirectangularReflectionMapping;
+  tex.colorSpace = THREE.SRGBColorSpace;
+  return tex;
+}
+
+function createGlowTexture(){
+  const c = document.createElement('canvas');
+  c.width = 128; c.height = 128;
+  const ctx = c.getContext('2d');
+  const g = ctx.createRadialGradient(64, 64, 0, 64, 64, 64);
+  g.addColorStop(0, 'rgba(255,235,205,.95)');
+  g.addColorStop(.2, 'rgba(255,190,130,.65)');
+  g.addColorStop(.55, 'rgba(220,130,70,.18)');
+  g.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, 128, 128);
+  return new THREE.CanvasTexture(c);
+}
+
+function createSparkTexture(){
+  const c = document.createElement('canvas');
+  c.width = 16; c.height = 16;
+  const ctx = c.getContext('2d');
+  const g = ctx.createRadialGradient(8, 8, 0, 8, 8, 8);
+  g.addColorStop(0, 'rgba(255,255,255,1)');
+  g.addColorStop(.25, 'rgba(255,255,255,.85)');
+  g.addColorStop(.6, 'rgba(255,255,255,.3)');
+  g.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, 16, 16);
+  return new THREE.CanvasTexture(c);
+}
+
+/* ---------- background shader ---------- */
+function createBackgroundShader(){
+  const vertexShader = `
+    varying vec2 vUv;
+    void main(){
+      vUv = uv;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    }
+  `;
+  const fragmentShader = `
+    varying vec2 vUv;
+    uniform float uTime;
+    uniform vec2 uResolution;
+    uniform vec2 uMouse;
+    uniform float uScroll;
+
+    float hash(float n){ return fract(sin(n) * 43758.5453123); }
+    float noise(in vec3 x){
+      vec3 p = floor(x); vec3 f = fract(x);
+      f = f*f*(3.0-2.0*f);
+      float n = p.x + p.y*57.0 + 113.0*p.z;
+      return mix(mix(mix(hash(n+0.0), hash(n+1.0), f.x), mix(hash(n+57.0), hash(n+58.0), f.x), f.y),
+                 mix(mix(hash(n+113.0), hash(n+114.0), f.x), mix(hash(n+170.0), hash(n+171.0), f.x), f.y), f.z);
+    }
+
+    void main(){
+      vec2 uv = (gl_FragCoord.xy - 0.5 * uResolution.xy) / uResolution.y;
+      float aspect = uResolution.x / uResolution.y;
+      float time = uTime * 0.08;
+      float scroll = uScroll;
+
+      float angle1 = 0.6; float angle2 = -0.7; float angle3 = 1.2;
+      float freq1 = 2.4; float freq2 = 3.2; float freq3 = 4.0;
+
+      vec2 warpedUv = uv;
+      float scrollDeform = scroll * 5.0;
+      warpedUv.x += sin(uv.y * 2.5 + time * 0.2 + scrollDeform) * 0.35;
+      warpedUv.y += cos(uv.x * 2.5 - time * 0.15 - scrollDeform * 0.8) * 0.35;
+      warpedUv.x += sin(uv.y * 1.2 - time * 0.1 - scrollDeform * 1.5) * 0.25;
+      warpedUv.y += cos(uv.x * 1.2 + time * 0.18 + scrollDeform * 1.2) * 0.25;
+
+      vec2 scrollDrift = vec2(scroll * 0.04, -scroll * 0.02);
+      vec2 mouseShift = vec2(uMouse.x * aspect * 0.05, uMouse.y * 0.05);
+      warpedUv += scrollDrift + mouseShift;
+
+      vec2 dir1 = vec2(cos(angle1), sin(angle1));
+      vec2 dir2 = vec2(cos(angle2), sin(angle2));
+      vec2 dir3 = vec2(cos(angle3), sin(angle3));
+
+      float w1 = sin(dot(warpedUv, dir1) * freq1 + time * 1.0);
+      float w2 = cos(dot(warpedUv, dir2) * freq2 - time * 1.4 + w1 * 0.4);
+      float w3 = sin(dot(warpedUv, dir3) * freq3 + time * 1.8 + w2 * 0.5);
+      float waveField = w1 * 0.50 + w2 * 0.35 + w3 * 0.15;
+
+      float wideSheen = pow(max(0.0, 1.0 - abs(waveField - 0.1)), 2.5);
+      float crispSpecular = pow(max(0.0, 1.0 - abs(waveField - 0.15)), 8.0);
+      float crest = wideSheen * 0.32 + crispSpecular * 0.5;
+
+      vec3 c0_shadow = vec3(0.0008,0.0005,0.0003);
+      vec3 c0_wave1  = vec3(0.034,0.016,0.006);
+      vec3 c0_wave2  = vec3(0.018,0.009,0.003);
+      vec3 c0_crest  = vec3(0.155,0.100,0.058);
+      vec3 c1_shadow = vec3(0.0003,0.0005,0.0010);
+      vec3 c1_wave1  = vec3(0.007,0.016,0.032);
+      vec3 c1_wave2  = vec3(0.004,0.009,0.020);
+      vec3 c1_crest  = vec3(0.060,0.128,0.235);
+
+      float t = smoothstep(0.0,1.0,scroll);
+      vec3 colShadow = mix(c0_shadow,c1_shadow,t);
+      vec3 colWave1  = mix(c0_wave1,c1_wave1,t);
+      vec3 colWave2  = mix(c0_wave2,c1_wave2,t);
+      vec3 colCrest  = mix(c0_crest,c1_crest,t);
+
+      vec3 color = colShadow;
+      color = mix(color,colWave2,smoothstep(-0.6,0.2,waveField));
+      color = mix(color,colWave1,smoothstep(0.0,0.8,waveField));
+      color += colCrest * crest * 0.9;
+      float vignette = 1.0 - dot(uv,uv) * 0.22;
+      color *= max(vignette, 0.35);
+      gl_FragColor = vec4(color,1.0);
+    }
+  `;
+  bgMaterial = new THREE.ShaderMaterial({
+    vertexShader, fragmentShader, uniforms: shaderUniforms,
+    depthWrite: false, depthTest: false
+  });
+  const bg = new THREE.Mesh(new THREE.PlaneGeometry(30,30), bgMaterial);
+  bg.position.set(0,0,-8);
+  bg.renderOrder = -10;
+  camera.add(bg);
+}
+
+/* ---------- object ---------- */
+function latLon(lat, lon, r){
+  const phi = (90 - lat) * Math.PI / 180;
+  const theta = (lon + 180) * Math.PI / 180;
+  return new THREE.Vector3(
+    -r * Math.sin(phi) * Math.cos(theta),
+    r * Math.cos(phi),
+    r * Math.sin(phi) * Math.sin(theta)
+  );
+}
+
+function createArc(start, end, color, radius){
+  const mid = start.clone().add(end).multiplyScalar(.5).normalize().multiplyScalar(radius);
+  const curve = new THREE.QuadraticBezierCurve3(start, mid, end);
+  const geo = new THREE.TubeGeometry(curve, 96, .0045, 5, false);
+  const mat = new THREE.MeshBasicMaterial({
+    color, transparent: true, opacity: .55, blending: THREE.AdditiveBlending, depthWrite: false
+  });
+  const mesh = new THREE.Mesh(geo, mat);
+  artifact.add(mesh);
+  return curve;
+}
+
+function createArtifact(){
+  artifact = new THREE.Group();
+  artifact.rotation.x = .08;
+  scene.add(artifact);
+
+  const bronzeMap = createBronzeTexture();
+  const bumpMap = bronzeMap.clone();
+  bumpMap.colorSpace = THREE.NoColorSpace;
+  bumpMap.needsUpdate = true;
+
+  const coreMat = new THREE.MeshStandardMaterial({
+    map: bronzeMap,
+    bumpMap: bumpMap,
+    bumpScale: .045,
+    color: 0xffffff,
+    metalness: .93,
+    roughness: .36,
+    envMapIntensity: 1.3,
+    emissive: new THREE.Color('#2b1408'),
+    emissiveIntensity: .22
+  });
+  coreMesh = new THREE.Mesh(new THREE.SphereGeometry(1.16, 128, 96), coreMat);
+  artifact.add(coreMesh);
+
+  const bronzeMat = new THREE.MeshStandardMaterial({
+    color: '#d6a474', metalness: 1, roughness: .24,
+    emissive: new THREE.Color('#241208'), emissiveIntensity: .32, envMapIntensity: 1.55
+  });
+  const bronzeDim = new THREE.MeshStandardMaterial({
+    color: '#92643d', metalness: .95, roughness: .33,
+    emissive: new THREE.Color('#170a04'), emissiveIntensity: .24, envMapIntensity: 1.2
+  });
+
+  const R = 1.235;
+  // latitudes
+  [-72,-60,-48,-36,-24,-12,0,12,24,36,48,60,72].forEach((deg, i) => {
+    const lat = deg * Math.PI / 180;
+    const rr = Math.cos(lat) * R;
+    const ring = new THREE.Mesh(
+      new THREE.TorusGeometry(Math.max(.001, rr), deg === 0 ? .0072 : .0034, 5, 160),
+      deg === 0 ? bronzeMat : bronzeDim
+    );
+    ring.rotation.x = Math.PI / 2;
+    ring.position.y = Math.sin(lat) * R;
+    artifact.add(ring);
+  });
+  // longitudes
+  for (let i = 0; i < 12; i++){
+    const ring = new THREE.Mesh(
+      new THREE.TorusGeometry(R, i % 3 === 0 ? .0055 : .0032, 5, 180),
+      i % 3 === 0 ? bronzeMat : bronzeDim
+    );
+    ring.rotation.y = (i / 12) * Math.PI;
+    artifact.add(ring);
+  }
+
+  // glowing inner beacon
+  const glowTex = createGlowTexture();
+  const haloMat = new THREE.SpriteMaterial({
+    map: glowTex, color: '#ffb36f', transparent: true, opacity: .6,
+    blending: THREE.AdditiveBlending, depthWrite: false
+  });
+  const halo = new THREE.Sprite(haloMat);
+  halo.scale.set(4.4, 4.4, 1);
+  halo.position.z = -.25;
+  artifact.add(halo);
+
+  const innerGlow = new THREE.Sprite(new THREE.SpriteMaterial({
+    map: glowTex, color: '#ffd3a1', transparent: true, opacity: .85,
+    blending: THREE.AdditiveBlending, depthWrite: false
+  }));
+  innerGlow.scale.set(1.15, 1.15, 1);
+  innerGlow.position.set(0, 0, 1.02);
+  artifact.add(innerGlow);
+
+  // cities
+  const cityData = [
+    {name: 'rajkot', lat: 22.3039, lon: 70.8022},
+    {name: 'rostov', lat: 47.2357, lon: 39.7015}
+  ];
+  const nodeMat = new THREE.MeshBasicMaterial({color: '#ffd3a7', toneMapped: false});
+  cityData.forEach(city => {
+    const pos = latLon(city.lat, city.lon, 1.172);
+    const node = new THREE.Mesh(new THREE.SphereGeometry(.024, 16, 16), nodeMat);
+    node.position.copy(pos);
+    artifact.add(node);
+    const label = document.querySelector('[data-marker="' + city.name + '"]');
+    markerDefs.push({node, label, normal: pos.clone().normalize()});
+    if (city.name === 'rajkot'){
+      const ring = new THREE.Mesh(new THREE.RingGeometry(.045, .05, 32), new THREE.MeshBasicMaterial({
+        color: '#e8c49a', transparent: true, opacity: .7, side: THREE.DoubleSide,
+        blending: THREE.AdditiveBlending, depthWrite: false
+      }));
+      ring.position.copy(pos.clone().multiplyScalar(1.003));
+      ring.lookAt(0,0,0);
+      artifact.add(ring);
+    }
+  });
+
+  // research arc: Rajkot to Rostov
+  const raj = latLon(22.3039, 70.8022, 1.18);
+  const ros = latLon(47.2357, 39.7015, 1.18);
+  const curve = createArc(raj, ros, '#f2c79a', 1.75);
+  arcBead = new THREE.Mesh(new THREE.SphereGeometry(.018, 12, 12), new THREE.MeshBasicMaterial({color:'#fff0d7', toneMapped:false}));
+  arcBead.position.copy(curve.getPoint(0));
+  artifact.add(arcBead);
+  artifact.userData.arcCurve = curve;
+
+  // tilted outer orbit
+  orbitGroup = new THREE.Group();
+  orbitGroup.rotation.set(1.08, .1, -.36);
+  const orbitRing = new THREE.Mesh(
+    new THREE.TorusGeometry(1.74, .0032, 4, 220),
+    new THREE.MeshBasicMaterial({color:'#9cc4ee', transparent:true, opacity:.4, blending:THREE.AdditiveBlending, depthWrite:false})
+  );
+  orbitGroup.add(orbitRing);
+  orbitBead = new THREE.Mesh(new THREE.SphereGeometry(.022, 12, 12), new THREE.MeshBasicMaterial({color:'#dceeff', toneMapped:false}));
+  orbitBead.position.set(1.74,0,0);
+  orbitGroup.add(orbitBead);
+  artifact.add(orbitGroup);
+
+  const coreLight = new THREE.PointLight('#ff9d5a', 6, 5, 2);
+  artifact.add(coreLight);
+
+  // initial orientation: bring India & Rostov toward the camera
+  artifact.rotation.y = Math.PI * .96;
+}
+
+/* ---------- sparks ---------- */
+function createSparks(){
+  const geometry = new THREE.BufferGeometry();
+  const positions = new Float32Array(sparkCount * 3);
+  const colors = new Float32Array(sparkCount * 3);
+  for (let i = 0; i < sparkCount; i++){
+    positions[i*3] = (Math.random() - .5) * 7;
+    positions[i*3+1] = (Math.random() - .5) * 5.2 - .3;
+    positions[i*3+2] = (Math.random() - .5) * 7;
+    if (Math.random() < .6){
+      colors[i*3] = 1.0; colors[i*3+1] = .4 + Math.random()*.15; colors[i*3+2] = .05 + Math.random()*.1;
+    } else {
+      colors[i*3] = .55 + Math.random()*.15; colors[i*3+1] = .82 + Math.random()*.12; colors[i*3+2] = 1.0;
+    }
+    sparkData.push({
+      speedX: (Math.random()-.5)*.4,
+      speedY: .15 + Math.random()*.3,
+      speedZ: (Math.random()-.5)*.4,
+      swaySpeed: .5 + Math.random()*1.5,
+      swayRadius: .05 + Math.random()*.15,
+      phase: Math.random()*Math.PI*2
+    });
+  }
+  geometry.setAttribute('position', new THREE.BufferAttribute(positions,3));
+  geometry.setAttribute('color', new THREE.BufferAttribute(colors,3));
+  const material = new THREE.PointsMaterial({
+    size: .028, vertexColors: true, transparent: true, opacity: .8,
+    blending: THREE.AdditiveBlending, depthWrite: false, map: createSparkTexture()
+  });
+  sparkParticles = new THREE.Points(geometry, material);
+  scene.add(sparkParticles);
+}
+
+/* ---------- init ---------- */
+function initThree(){
+  scene = new THREE.Scene();
+  scene.background = new THREE.Color('#030202');
+  scene.fog = new THREE.FogExp2('#030202', .022);
+
+  camera = new THREE.PerspectiveCamera(50, sizes.width/sizes.height, .1, 100);
+  camera.position.set(0, .45, 5.7);
+  scene.add(camera);
+
+  createBackgroundShader();
+
+  renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:false, powerPreference:'high-performance'});
+  renderer.setSize(sizes.width, sizes.height);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.shadowMap.enabled = false;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.15;
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+  const env = createStudioEnvironment();
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  envTexture = pmrem.fromEquirectangular(env).texture;
+  scene.environment = envTexture;
+  env.dispose();
+  pmrem.dispose();
+
+  const ambient = new THREE.AmbientLight('#ffffff', .22);
+  scene.add(ambient);
+
+  const key = new THREE.SpotLight('#fff0dc', 170, 30, Math.PI/4.4, .9, 2);
+  key.position.set(4, 6, 4);
+  scene.add(key);
+
+  const rim = new THREE.DirectionalLight('#a9d2ff', 3.1);
+  rim.position.set(-5, 3, -4);
+  scene.add(rim);
+
+  const fill = new THREE.DirectionalLight('#ffcf9e', 1.15);
+  fill.position.set(-2, -4, 3);
+  scene.add(fill);
+
+  createArtifact();
+  createSparks();
+
+  window.addEventListener('resize', onResize);
+  window.addEventListener('mousemove', (e) => {
+    targetMouseX = (e.clientX / window.innerWidth) * 2 - 1;
+    targetMouseY = (e.clientY / window.innerHeight) * 2 - 1;
+  }, {passive:true});
+
+  let firstRender = true;
+  function loop(){
+    requestAnimationFrame(loop);
+    const dt = Math.min(clock.getDelta(), .05);
+    const elapsed = clock.elapsedTime;
+    updateScene(dt, elapsed);
+    renderer.render(scene, camera);
+    if (firstRender){ firstRender = false; body.classList.add('webgl-ready'); }
+  }
+  loop();
+}
+
+function onResize(){
+  sizes.width = window.innerWidth;
+  sizes.height = window.innerHeight;
+  if (!camera || !renderer) return;
+  camera.aspect = sizes.width / sizes.height;
+  camera.updateProjectionMatrix();
+  renderer.setSize(sizes.width, sizes.height);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  shaderUniforms.uResolution.value.set(sizes.width, sizes.height);
+}
+
+function smoothstep(a,b,x){
+  const t = Math.max(0, Math.min(1, (x-a)/(b-a)));
+  return t*t*(3-2*t);
+}
+function lookupOffset(s){
+  const keys = [
+    [0.00, -1.28], [0.22, -.88], [0.30, -.55], [0.40, .18],
+    [0.54, 1.02], [0.66, .82], [0.76, .88], [0.86, .50],
+    [0.95, .05], [1.00, .05]
+  ];
+  for (let i = 0; i < keys.length - 1; i++){
+    const a = keys[i], b = keys[i+1];
+    if (s >= a[0] && s <= b[0]){
+      const t = smoothstep(0,1,(s-a[0])/(b[0]-a[0]));
+      return a[1] + (b[1]-a[1]) * t;
+    }
+  }
+  return keys[keys.length-1][1];
+}
+
+function updateScene(dt, elapsed){
+  const max = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+  targetScrollValue = max > 0 ? window.scrollY / max : 0;
+  if (!cameraOrbitReady){
+    currentScroll = targetScrollValue;
+    cameraOrbitReady = true;
+  }
+  const lerp = reduceMotion ? 1 : .03;
+  currentScroll += (targetScrollValue - currentScroll) * lerp;
+  mouseX += (targetMouseX - mouseX) * .05;
+  mouseY += (targetMouseY - mouseY) * .05;
+  const time = reduceMotion ? 0 : elapsed;
+
+  // artifact rotation + mouse tilt
+  if (artifact){
+    artifact.rotation.y = Math.PI * .96 + time * .028 + mouseX * .16;
+    artifact.rotation.x = .08 + mouseY * .08;
+    if (arcBead && artifact.userData.arcCurve){
+      const t = reduceMotion ? .35 : (elapsed * .045) % 1;
+      arcBead.position.copy(artifact.userData.arcCurve.getPoint(t));
+      const pulse = 1 + Math.sin(elapsed * 3.4) * .25;
+      arcBead.scale.setScalar(pulse);
+    }
+    if (orbitBead && orbitGroup){
+      const a = time * .18;
+      orbitBead.position.set(Math.cos(a) * 1.74, Math.sin(a) * 1.74, 0);
+    }
+  }
+
+  // sparks
+  if (sparkParticles){
+    const positions = sparkParticles.geometry.attributes.position.array;
+    const scrollVelocity = Math.abs(targetScrollValue - currentScroll);
+    const speedMultiplier = 1 + scrollVelocity * 9;
+    const turbulence = scrollVelocity * .8;
+    for (let i = 0; i < sparkCount; i++){
+      const idx = i * 3;
+      const data = sparkData[i];
+      positions[idx] += data.speedX * dt * speedMultiplier;
+      positions[idx+1] += data.speedY * dt * speedMultiplier;
+      positions[idx+2] += data.speedZ * dt * speedMultiplier;
+      const sway = data.swayRadius * (1 + turbulence * 4);
+      positions[idx] += Math.sin(time * data.swaySpeed + data.phase) * sway * dt;
+      positions[idx+2] += Math.cos(time * data.swaySpeed + data.phase) * sway * dt;
+      if (positions[idx+1] > 3 || Math.abs(positions[idx]) > 3.6 || Math.abs(positions[idx+2]) > 3.6){
+        positions[idx+1] = -2.6;
+        positions[idx] = (Math.random() - .5) * 3.2;
+        positions[idx+2] = (Math.random() - .5) * 3.2;
+      }
+    }
+    sparkParticles.geometry.attributes.position.needsUpdate = true;
+  }
+
+  // camera orbit
+  const narrowStage = sizes.width < 820;
+  const phi = currentScroll * Math.PI * 2;
+  const y = .45 + Math.sin(currentScroll * Math.PI) * .95;
+  const radius = (5.7 - Math.sin(currentScroll * Math.PI) * .8) * (narrowStage ? 1.24 : 1);
+  const targetPos = new THREE.Vector3(radius * Math.sin(phi), y, radius * Math.cos(phi));
+  camera.position.lerp(targetPos, reduceMotion ? 1 : .035);
+  const lookAtX = lookupOffset(currentScroll);
+  camera.lookAt(new THREE.Vector3(lookAtX, narrowStage ? -.30 : -.05, 0));
+  camera.updateMatrixWorld(true);
+
+  // labels
+  labelFade = 1 - smoothstep(.34, .48, currentScroll);
+  if (document.body.classList.contains('dossier-open') || window.innerWidth < 900) labelFade = 0;
+  if (artifact) artifact.updateMatrixWorld(true);
+  const camPos = camera.position;
+  markerDefs.forEach(m => {
+    if (!m.label) return;
+    const world = new THREE.Vector3();
+    m.node.getWorldPosition(world);
+    const normal = m.normal.clone().applyQuaternion(artifact.quaternion);
+    const toCam = camPos.clone().sub(world).normalize();
+    const facing = normal.dot(toCam);
+    const projected = world.clone().project(camera);
+    let visible = facing > .05 && labelFade > .01 && projected.z < 1;
+    if (projected.x < -1.05 || projected.x > 1.05 || projected.y < -1.05 || projected.y > 1.05) visible = false;
+    m.label.style.opacity = visible ? (labelFade * .95).toFixed(3) : '0';
+    if (visible){
+      const x = (projected.x * .5 + .5) * sizes.width;
+      const yy = (-projected.y * .5 + .5) * sizes.height;
+      m.label.style.left = x + 'px';
+      m.label.style.top = yy + 'px';
+    }
+  });
+
+  // shader uniforms
+  shaderUniforms.uTime.value = time;
+  shaderUniforms.uMouse.value.set(mouseX, -mouseY);
+  shaderUniforms.uScroll.value = currentScroll;
+}
+
+try {
+  initThree();
+} catch (err){
+  console.warn('WebGL stage unavailable:', err);
+  document.body.classList.add('no-webgl');
+  document.querySelectorAll('.geo-label').forEach(el => el.style.opacity = '0');
+}
+</script>
+</body>
+</html>
