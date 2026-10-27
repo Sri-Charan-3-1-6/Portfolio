@@ -136,6 +136,31 @@ body.cursor-hidden .cursor-inner,body.cursor-hidden .cursor-outer{opacity:0}
   transition:border-color .35s,background .35s,color .35s;
 }
 .dossier-trigger:hover{border-color:rgba(201,155,107,.7);background:rgba(201,155,107,.08);color:var(--bronze-bright)}
+.sound-toggle{
+  display:inline-flex;align-items:center;gap:9px;
+  border:1px solid rgba(255,246,237,.22);border-radius:20px;
+  padding:8px 14px 8px 12px;color:#f7eee3;
+  transition:border-color .35s,background .35s;
+}
+.sound-toggle:hover{border-color:rgba(201,155,107,.7);background:rgba(201,155,107,.08)}
+.sound-toggle:focus-visible{outline:2px solid var(--bronze);outline-offset:3px}
+.sound-eq{display:inline-flex;align-items:flex-end;gap:2px;height:12px;width:14px;flex:none}
+.sound-eq i{
+  display:block;width:2px;height:100%;border-radius:1px;background:var(--bronze-bright);
+  transform:scaleY(.32);transform-origin:bottom;transition:transform .4s var(--ease),opacity .4s;
+}
+.sound-toggle[aria-pressed="false"] .sound-eq i{opacity:.4}
+.sound-toggle[aria-pressed="true"] .sound-eq i{animation:eqPulse 1.15s ease-in-out infinite}
+.sound-toggle[aria-pressed="true"] .sound-eq i:nth-child(2){animation-delay:-.95s;animation-duration:.85s}
+.sound-toggle[aria-pressed="true"] .sound-eq i:nth-child(3){animation-delay:-.4s;animation-duration:1.3s}
+.sound-toggle[aria-pressed="true"] .sound-eq i:nth-child(4){animation-delay:-.7s;animation-duration:1s}
+@keyframes eqPulse{0%,100%{transform:scaleY(.28)}50%{transform:scaleY(1)}}
+.sound-title{
+  font-size:8.5px;font-weight:500;letter-spacing:1.7px;text-transform:uppercase;
+  max-width:146px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  color:rgba(255,246,237,.78);transition:color .35s;
+}
+.sound-toggle:hover .sound-title{color:#fff6ed}
 .contact-btn{
   display:inline-flex;align-items:center;gap:9px;padding:10px 20px;background:var(--ink);color:#0d0906;
   border-radius:20px;font-size:9px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;
@@ -594,6 +619,8 @@ button.contact-link{width:100%;text-align:left;font:inherit;font-size:10px}
 .dossier-footer{margin-top:54px;padding-top:22px;border-top:1px solid rgba(29,23,18,.2);display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
 .dossier-footer p{font-size:9px;letter-spacing:1.2px;text-transform:uppercase;color:#8a7561}
 .dossier-footer a{font-size:9px;letter-spacing:1.4px;text-transform:uppercase;border-bottom:1px solid #8b5e39;color:#6a4a31;padding-bottom:2px}
+.dossier-footer .music-credit{order:-1;flex-basis:100%;margin-bottom:4px;color:#9a8875}
+.dossier-footer .music-credit a{font-size:inherit;letter-spacing:inherit;border-bottom:none;text-decoration:underline;text-underline-offset:2px;color:#8b5e39}
 .dossier-print{font-size:9px;letter-spacing:1.4px;text-transform:uppercase;color:#6a4a31;border-bottom:1px solid #8b5e39;padding-bottom:2px}
 .toast{
   position:fixed;left:50%;bottom:30px;z-index:1500;transform:translate(-50%,20px);
@@ -729,6 +756,8 @@ button.contact-link{width:100%;text-align:left;font:inherit;font-size:10px}
   .brand-mark{width:24px;height:24px;font-size:11px}
   .brand-text{font-size:8.5px;letter-spacing:2.4px}
   .header-actions{gap:7px}
+  .sound-toggle{padding:0;width:30px;height:30px;justify-content:center;gap:0}
+  .sound-title{display:none}
   .dossier-trigger{padding:8px 12px;font-size:7.5px;letter-spacing:1.3px}
   .contact-btn{padding:8px 12px;font-size:7.5px;letter-spacing:1.2px;gap:6px}
   .grid-lines{left:auto;right:14px;width:auto;justify-content:flex-end}
@@ -867,6 +896,7 @@ button.contact-link{width:100%;text-align:left;font:inherit;font-size:10px}
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
   .reel-frame img,.reel-frame.is-current img{transform:none}
   .plate-frame{clip-path:none}
+  .sound-toggle[aria-pressed="true"] .sound-eq i{animation:none;transform:scaleY(.6)}
   html{scroll-behavior:auto}
 }
 
@@ -910,7 +940,7 @@ button.contact-link{width:100%;text-align:left;font:inherit;font-size:10px}
   "email":"mailto:sricharanpittasp6@gmail.com",
   "address":{"@type":"PostalAddress","addressLocality":"Rajkot","addressRegion":"Gujarat","addressCountry":"India"},
   "affiliation":[{"@type":"EducationalOrganization","name":"Marwadi University"},{"@type":"Organization","name":"ElderAI Swarm"}],
-  "sameAs":["https://linkedin.com/in/sri-charan-pitta","https://github.com/Sri-Charan-3-1-6"],
+  "sameAs":["https://www.linkedin.com/in/sri-charan-pitta-219793396","https://github.com/Sri-Charan-3-1-6"],
   "knowsAbout":["Artificial Intelligence","Machine Learning","Multi-Agent Systems","LLM Orchestration","Computer Vision","On-Device AI"]
 }
 </script>
@@ -936,6 +966,10 @@ button.contact-link{width:100%;text-align:left;font:inherit;font-size:10px}
     <a href="#slide-5" class="nav-link" data-scroll-to="0.95">Signal</a>
   </nav>
   <div class="header-actions">
+    <button class="sound-toggle" type="button" data-sound-toggle aria-pressed="false" aria-label="Background music">
+      <span class="sound-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="sound-title" data-sound-title>Music</span>
+    </button>
     <button class="dossier-trigger" type="button" data-open-dossier aria-haspopup="dialog" aria-controls="dossier">Dossier</button>
     <a class="contact-btn" href="mailto:sricharanpittasp6@gmail.com">Contact <span class="btn-circle" aria-hidden="true"></span></a>
   </div>
@@ -1074,7 +1108,7 @@ button.contact-link{width:100%;text-align:left;font:inherit;font-size:10px}
         <p class="slide-desc">Currently building ElderAI Swarm. Available for AI/ML internships and research collaborations. If you’re working on something that should exist, reach out.</p>
         <a class="big-email" href="mailto:sricharanpittasp6@gmail.com">sricharanpittasp6@gmail.com <span>↗</span></a>
         <div class="contact-links fade-up d2">
-          <a class="contact-link" href="https://linkedin.com/in/sri-charan-pitta" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><span>sri-charan-pitta</span><em>↗</em></a>
+          <a class="contact-link" href="https://www.linkedin.com/in/sri-charan-pitta-219793396" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><span>sri-charan-pitta-219793396</span><em>↗</em></a>
           <a class="contact-link" href="https://github.com/Sri-Charan-3-1-6" target="_blank" rel="noopener noreferrer"><span>GitHub</span><span>Sri-Charan-3-1-6</span><em>↗</em></a>
           <button class="contact-link" type="button" data-open-dossier data-target="dossier-evidence" aria-haspopup="dialog" aria-controls="dossier"><span>Evidence</span><span>Certificates &amp; field notes</span><em>↗</em></button>
           <a class="contact-link" href="https://maps.google.com/?q=Rajkot,Gujarat,India" target="_blank" rel="noopener noreferrer"><span>Based</span><span>Rajkot, Gujarat · IST</span><em>↗</em></a>
@@ -1256,7 +1290,7 @@ button.contact-link{width:100%;text-align:left;font:inherit;font-size:10px}
             <ul class="resume-contact">
               <li><span>Email</span><a href="mailto:sricharanpittasp6@gmail.com">sricharanpittasp6@gmail.com</a></li>
               <li><span>Phone</span><a href="tel:+916300053237">+91 63000 53237</a></li>
-              <li><span>LinkedIn</span><a href="https://linkedin.com/in/sri-charan-pitta" target="_blank" rel="noopener noreferrer">/in/sri-charan-pitta</a></li>
+              <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/sri-charan-pitta-219793396" target="_blank" rel="noopener noreferrer">sri-charan-pitta-219793396</a></li>
               <li><span>GitHub</span><a href="https://github.com/Sri-Charan-3-1-6" target="_blank" rel="noopener noreferrer">/Sri-Charan-3-1-6</a></li>
               <li><span>Based</span><span>Rajkot, Gujarat, India</span></li>
               <li><span>Status</span><span>Open to internships &amp; research</span></li>
@@ -1517,6 +1551,7 @@ button.contact-link{width:100%;text-align:left;font:inherit;font-size:10px}
         </section>
 
         <footer class="dossier-footer">
+          <p class="music-credit">Score — <a href="https://incompetech.com/music/royalty-free/" target="_blank" rel="noopener noreferrer">Kevin MacLeod</a> (incompetech.com) · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a></p>
           <p>© 2026 Sri Charan Pitta · Rajkot, India</p>
           <div style="display:flex;gap:20px;flex-wrap:wrap">
             <button class="dossier-print" type="button" data-print>Print this dossier</button>
@@ -1891,6 +1926,116 @@ button.contact-link{width:100%;text-align:left;font:inherit;font-size:10px}
   }
   if (printBtn){ printBtn.addEventListener('click', () => window.print()); }
 
+  const TRACKS = [
+    {file:'assets/audio/ossuary-rest.mp3', title:'Ossuary 5 — Rest', gain:0.84},
+    {file:'assets/audio/virtutes-instrumenti.mp3', title:'Virtutes Instrumenti', gain:1},
+    {file:'assets/audio/ambiment.mp3', title:'Ambiment', gain:0.96},
+    {file:'assets/audio/floating-cities.mp3', title:'Floating Cities', gain:0.96},
+    {file:'assets/audio/dreamy-flashback.mp3', title:'Dreamy Flashback', gain:1}
+  ];
+  const musicBtn = document.querySelector('[data-sound-toggle]');
+  const musicTitle = document.querySelector('[data-sound-title]');
+  const track = pickTrack();
+  const music = new Audio(track.file);
+  music.loop = true;
+  music.preload = 'none';
+  const BASE_VOL = 0.26;
+  let musicOn = true, musicStarted = false, pendingUnmute = false, ducked = false, fadeRaf = 0;
+  try { if (localStorage.getItem('scp-sound') === 'off') musicOn = false; } catch(e){}
+
+  function pickTrack(){
+    let i = Math.floor(Math.random() * TRACKS.length);
+    try {
+      let queue = JSON.parse(localStorage.getItem('scp-queue') || '[]');
+      if (!Array.isArray(queue)) queue = [];
+      queue = queue.filter(n => Number.isInteger(n) && n >= 0 && n < TRACKS.length);
+      if (!queue.length){
+        queue = TRACKS.map((_, n) => n);
+        for (let k = queue.length - 1; k > 0; k--){
+          const j = Math.floor(Math.random() * (k + 1));
+          [queue[k], queue[j]] = [queue[j], queue[k]];
+        }
+        const last = Number(localStorage.getItem('scp-last'));
+        if (queue.length > 1 && queue[0] === last){
+          [queue[0], queue[queue.length - 1]] = [queue[queue.length - 1], queue[0]];
+        }
+      }
+      i = queue.shift();
+      localStorage.setItem('scp-queue', JSON.stringify(queue));
+      localStorage.setItem('scp-last', String(i));
+    } catch(e){}
+    return TRACKS[i];
+  }
+  function targetVol(){ return BASE_VOL * track.gain * (ducked ? 0.22 : 1); }
+  function rampTo(v, ms){
+    cancelAnimationFrame(fadeRaf);
+    const from = music.volume, t0 = performance.now();
+    const step = now => {
+      const p = Math.min(1, (now - t0) / ms);
+      music.volume = Math.max(0, Math.min(1, from + (v - from) * (1 - Math.pow(1 - p, 3))));
+      if (p < 1) fadeRaf = requestAnimationFrame(step);
+    };
+    fadeRaf = requestAnimationFrame(step);
+  }
+  function duckMusic(on){
+    ducked = on;
+    if (!music.paused && musicOn) rampTo(targetVol(), 900);
+  }
+  function syncMusic(){
+    if (!musicBtn) return;
+    musicBtn.setAttribute('aria-pressed', String(musicOn));
+    musicBtn.setAttribute('aria-label', (musicOn ? 'Mute' : 'Play') + ' background music — ' + track.title);
+    musicBtn.title = track.title + ' · Kevin MacLeod · CC BY 4.0';
+    if (musicTitle) musicTitle.textContent = musicOn ? track.title : 'Music off';
+  }
+  function startMusic(){
+    if (!musicOn || musicStarted) return;
+    musicStarted = true;
+    music.muted = false;
+    music.volume = 0;
+    music.play().then(() => rampTo(targetVol(), 2400)).catch(() => {
+      musicStarted = false;
+      music.volume = 0;
+      pendingUnmute = true;
+    });
+  }
+  function unlockSound(e){
+    if (!pendingUnmute || !musicOn) return;
+    if (e.target && e.target.closest && e.target.closest('[data-sound-toggle]')) return;
+    music.muted = false;
+    music.volume = 0;
+    musicStarted = true;
+    music.play().then(() => {
+      pendingUnmute = false;
+      rampTo(targetVol(), 1800);
+    }).catch(() => {
+      musicStarted = false;
+      music.volume = 0;
+    });
+  }
+  ['pointerdown','keydown','touchstart'].forEach(ev => document.addEventListener(ev, unlockSound, {passive:true}));
+  if (musicBtn) musicBtn.addEventListener('click', () => {
+    musicOn = !musicOn;
+    try { localStorage.setItem('scp-sound', musicOn ? 'on' : 'off'); } catch(e){}
+    pendingUnmute = false;
+    if (musicOn){
+      music.muted = false;
+      music.volume = 0;
+      if (music.paused){
+        musicStarted = true;
+        music.play().then(() => rampTo(targetVol(), 1400)).catch(() => { musicStarted = false; });
+      } else rampTo(targetVol(), 900);
+    } else {
+      cancelAnimationFrame(fadeRaf);
+      music.pause();
+      music.muted = true;
+      music.volume = 0;
+    }
+    syncMusic();
+  });
+  syncMusic();
+  startMusic();
+
   const lb = document.querySelector('.lightbox');
   const lbImg = lb.querySelector('.lb-stage img');
   const lbStage = lb.querySelector('.lb-stage');
@@ -1973,6 +2118,7 @@ button.contact-link{width:100%;text-align:left;font:inherit;font-size:10px}
       playBtn.setAttribute('aria-pressed', String(playing));
       soundBtn.textContent = pwVideo.muted ? 'Sound off' : 'Sound on';
       soundBtn.setAttribute('aria-pressed', String(!pwVideo.muted));
+      duckMusic(!pwVideo.muted && !pwVideo.paused);
     };
     const evaluate = () => {
       const canPlay = dossier.classList.contains('is-open') && inView && !userPaused && !reduceMotion;

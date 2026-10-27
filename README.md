@@ -8,7 +8,7 @@
 
 [**Live site →**](https://sri-charan-3-1-6.github.io/Portfolio/) &nbsp;·&nbsp;
 [Download CV](Sri_Charan_Pitta_CV.pdf) &nbsp;·&nbsp;
-[LinkedIn](https://linkedin.com/in/sri-charan-pitta) &nbsp;·&nbsp;
+[LinkedIn](https://www.linkedin.com/in/sri-charan-pitta-219793396) &nbsp;·&nbsp;
 [Email](mailto:sricharanpittasp6@gmail.com)
 
 </div>
@@ -46,6 +46,7 @@ A cinematic, single-page portfolio in bronze and time. A real-time WebGL globe d
 - **Dossier.** A full CV in an accessible modal with a focus trap, <kbd>Esc</kbd> to close and <kbd>D</kbd> to open. It prints to a clean A4 résumé with all media stripped.
 - **Lightbox.** Grouped galleries with arrow-key navigation, a trapped focus loop and focus returned to the opener.
 - **Media.** A muted stage video that plays only while it's on screen. It respects `prefers-reduced-motion` and has explicit play and sound controls.
+- **Background score.** Five licensed cinematic tracks rotate on every visit with no repeats until the set cycles. The mute control is remembered, the score fades in on your first interaction where browsers block autoplay, and it ducks while the stage video has sound.
 - **Responsive.** Tuned layouts for desktop, laptop, short screens, phones and very small phones.
 - **Performance.** Responsive WebP images in two sizes, lazy loading, and no build step and no framework. The site is one HTML file plus assets.
 - **Share-ready.** Open Graph and Twitter cards, plus `Person` JSON-LD.
@@ -66,6 +67,7 @@ A cinematic, single-page portfolio in bronze and time. A real-time WebGL globe d
 ├── index.html                 # the entire site: markup, styles and scripts
 ├── Sri_Charan_Pitta_CV.pdf    # printable CV (generated from the dossier)
 ├── assets/                    # optimised WebP photos, certificates, screenshots, video, share card
+│   └── audio/                 # five looped tracks for the background score
 └── docs/screens/              # README screenshots
 ```
 
@@ -88,6 +90,12 @@ The site is hosted on **GitHub Pages**: *Settings → Pages → Deploy from a br
 ## Built with
 
 [Three.js](https://threejs.org/) · vanilla JavaScript · CSS · Google Fonts (Italiana, Outfit, Playfair Display)
+
+## Music
+
+The background score is by [Kevin MacLeod](https://incompetech.com/music/royalty-free/) (incompetech.com), licensed under [Creative Commons: By Attribution 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+*Ossuary 5 — Rest* · *Virtutes Instrumenti* · *Ambiment* · *Floating Cities* · *Dreamy Flashback*
 
 ---
 
